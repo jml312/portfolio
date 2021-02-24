@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .check input:invalid,
+  .check textarea:invalid {
+    border-color: red;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .label-floating input:not(:placeholder-shown),
+  .label-floating textarea:not(:placeholder-shown) {
+    padding-top: 1.4rem;
+  }
+  .label-floating input:not(:placeholder-shown) ~ label,
+  .label-floating textarea:not(:placeholder-shown) ~ label {
+    font-size: 0.8rem;
+    transition: all 0.2s ease-in-out;
+    color: black;
+    opacity: 1;
+  }
+
+  .website_checklist ul label {
+    line-height: 1.4;
+    padding: 13px 24px 13px 64px;
+    display: block;
+    position: relative;
+    z-index: 100;
+  }
+
+  .website_checklist ul input,
+  .website_checklist ul li.focus:before {
+    left: 0;
+    top: 0;
+    position: absolute;
+  }
+
+  .website_checklist li {
+    position: relative;
+  }
+
+  .website_checklist ul li.focus:before {
+    left: 0;
+    top: 0;
+    position: absolute;
+  }
+
+  .website_checklist ul input {
+    display: none;
+  }
+
+  .website_checklist ul li.focus:before,
+  .website_checklist ul span.input:before,
+  .website_checklist ul span.current:before {
+    content: "";
+  }
+
+  .website_checklist ul span.current,
+  .website_checklist ul span.input {
+    background-color: #ff2800;
+    width: 26px;
+    height: 26px;
+    left: 24px;
+    top: 10px;
+  }
+
+  .website_checklist ul span.current {
+    background-color: #1c86ee;
+  }
+
+  .website_checklist ul span.input:before,
+  .website_checklist ul span.current:before {
+    width: 22px;
+    height: 22px;
+    top: 2px;
+    left: 2px;
+  }
+
+  .website_checklist ul span,
+  .website_checklist ul span:after,
+  .website_checklist ul span:before {
+    display: block;
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  .website_checklist ul li.checked span.input,
+  .website_checklist ul li.checked span.input:before {
+    background: gray;
+  }
+
+  .site-link {
+    @apply text-sm sm:text-base lg:text-lg p-3 lg:p-3.5 rounded-lg sm:rounded-xl flex justify-start items-center font-bold;
+  }
+  .media-link {
+    @apply rounded-full bg-white text-xl sm:text-xl p-1.5 md:p-2;
+  }
+
+  .tooltip .tooltip-text {
+    @apply invisible p-1 mb-10 absolute flex justify-center items-center z-50 -ml-2 text-xs w-auto rounded-lg bg-white text-black font-semibold overflow-hidden;
+  }
+
+  .tooltip:hover .tooltip-text {
+    @apply visible;
+  }
+}
