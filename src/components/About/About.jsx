@@ -4,7 +4,7 @@ import Typewriter from "typewriter-effect";
 import Landing from "./Landing.mp4";
 import { closeSidebar } from "../../sidebarFunctions";
 
-const currentGrade = "Sophomore";
+const currentGrade = "Junior";
 
 const stringSplitter = (string) => {
   const splitter = new GraphemeSplitter();
@@ -69,7 +69,7 @@ function Intro() {
               )
               .pauseFor(750)
               .typeString(
-                `<br><strong class="leading-tall">I strive to create <span class="bg-gray-600  rounded-full py-1 px-2.5">Impactful</span> Web Experiences</strong>`
+                `<br><strong class="leading-tall">I strive to create <span class="bg-gray-600  rounded-full py-1 px-2.5">impactful</span> web experiences</strong>`
               )
               .callFunction(() => {
                 if (show && document.getElementById("scroll-arrow") !== null) {

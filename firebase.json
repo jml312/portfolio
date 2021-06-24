@@ -1,0 +1,23 @@
+{
+  "rewrites": [
+    {
+      "source": "https://us-central1-portfolio-d4c23.cloudfunctions.net",
+      "function": "submit"
+    }
+  ],
+  "hosting": {
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      ".env",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

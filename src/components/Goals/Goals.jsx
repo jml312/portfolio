@@ -34,26 +34,21 @@ function Goals() {
         <div className="flex justify-center items-center text-white website_checklist w-full py-12 sm:py-16 md:py-20">
           <div className="bg-white rounded-xl shadow-xl text-black p-2 pb-4 checklist_header w-3/4 sm:pl-2 pr-8">
             <ul>
-              <ListItem item="Learn HTML" date="December 2019" checked />
-              <ListItem item="Learn CSS" date="May 2020" checked />
+              <ListItem item="Learn React" date="February 2021" checked />
+              <ListItem item="Learn Typescript" date="February 2021" checked />
+              <ListItem item="Learn Node" date="March 2021" checked />
+              <ListItem item="Learn MongoDB" date="April 2021" checked />
               <ListItem
-                item="Learn a CSS Framework"
-                date="October 2020"
-                checked
+                item="Cooking app using MERN stack"
+                date="June 2021"
+                current
               />
-              <ListItem item="Learn JavaScript" date="December 2020" checked />
-              <ListItem item="Learn React" date="February 2021" current />
-              <ListItem item="Learn Typescript" date="February 2021" />
+              <ListItem item="Learn Next JS" date="June 2021" />
               <ListItem
-                item="Cooking Recipe App With React and TypeScript"
-                date="March 2021"
-              />
-              <ListItem item="Learn Node" date="March 2021" />
-              <ListItem item="Learn MongoDB" date="April 2021" />
-              <ListItem
-                item="Basketball Workout App With React and MongoDB"
+                item="Basketball Workout App With Next and MongoDB"
                 date="May 2021"
               />
+              <ListItem item="Write a Medium Article" date="August 2021" />
             </ul>
           </div>
         </div>

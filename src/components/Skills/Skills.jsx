@@ -20,6 +20,10 @@ import {
   react,
   SASS,
   Tailwind,
+  ts,
+  Mongo,
+  Django,
+  sp,
 } from "./index.js";
 
 function SkillCard({ title, images }) {
@@ -119,6 +123,12 @@ const skillCards = [
         title: "JavaScript",
       },
       {
+        key: 2,
+        src: ts,
+        alt: "TypeScript",
+        title: "TypeScript",
+      },
+      {
         key: 4,
         src: react,
         alt: "React",
@@ -141,6 +151,12 @@ const skillCards = [
         src: Node,
         alt: "Node",
         title: "Node",
+      },
+      {
+        key: 3,
+        src: Mongo,
+        alt: "MongoDB",
+        title: "MongoDB",
       },
     ],
   },
@@ -171,6 +187,18 @@ const skillCards = [
         src: MATLAB,
         alt: "Matlab",
         title: "MATLAB",
+      },
+      {
+        key: 5,
+        src: Django,
+        alt: "Django",
+        title: "Django",
+      },
+      {
+        key: 8,
+        src: sp,
+        alt: "Squarespace",
+        title: "Squarespace",
       },
       {
         key: 6,

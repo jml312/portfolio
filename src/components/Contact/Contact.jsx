@@ -8,14 +8,10 @@ import Header from "../Header/Header";
 
 async function validateHuman(token) {
   const secret = process.env.REACT_APP_RECAPTCHA_SECRET_KEY;
-  const response = await fetch(
+  await fetch(
     `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`,
     {
       method: "POST",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-      }
     }
   )
     .then((response) => response.json())
@@ -44,7 +40,7 @@ function Contact() {
   useEffect(() => {
     document.querySelector("#contact-me").addEventListener(
       "invalid",
-      function (event) {
+      function () {
         this.classList.add("check");
       },
       true
@@ -63,7 +59,6 @@ function Contact() {
   };
 
   const handleSubmit = async (event) => {
-    return
     event.preventDefault();
     const token = await reRef.current.executeAsync();
     reRef.current.reset();
@@ -87,8 +82,12 @@ function Contact() {
   };
 
   const sendEmail = async () => {
-    Axios.post("/submit", formData)
-      .then((res) => {
+    Axios.post(
+      "https://us-central1-portfolio-d4c23.cloudfunctions.net/submit",
+      formData,
+      { headers: { "Access-Control-Allow-Origin": "*" } }
+    )
+      .then(() => {
         db.collection("contacts").add({
           name: formData.name,
           email: formData.email,

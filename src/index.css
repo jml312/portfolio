@@ -116,4 +116,85 @@
   .tooltip:hover .tooltip-text {
     @apply visible;
   }
+
+  .wrapper {
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ball {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    margin: 0 1.2rem;
+    background-color: #030200;
+  }
+
+  @keyframes ball1animation {
+    0% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+    12.5% {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.5);
+    }
+    25%,
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+
+  .ball1 {
+    -webkit-animation: ball1animation 1.75s infinite linear;
+    animation: ball1animation 1.75s infinite linear;
+  }
+
+  @keyframes ball2animation {
+    0%,
+    25% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+    37.5% {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.5);
+    }
+    50%,
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+
+  .ball2 {
+    -webkit-animation: ball2animation 1.75s infinite linear;
+    animation: ball2animation 1.75s infinite linear;
+  }
+
+  @keyframes ball3animation {
+    0%,
+    50% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+    62.5% {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.5);
+    }
+    75%,
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+
+  .ball3 {
+    -webkit-animation: ball3animation 1.75s infinite linear;
+    animation: ball3animation 1.75s infinite linear;
+  }
 }

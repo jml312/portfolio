@@ -15,3 +15,7 @@ export { default as Python } from "./images/python.png";
 export { default as react } from "./images/react.png";
 export { default as SASS } from "./images/sass.png";
 export { default as Tailwind } from "./images/tailwind.svg";
+export { default as Django } from "./images/django.png";
+export { default as Mongo } from "./images/mongodb.png";
+export { default as ts } from "./images/ts.png";
+export { default as sp } from "./images/squarespace.png";
