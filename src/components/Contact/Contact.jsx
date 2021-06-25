@@ -1,27 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import ScrollAnimation from "react-animate-on-scroll";
-import ReCAPTCHA from "react-google-recaptcha";
 
-import { Axios, db } from "../../firebase/firebaseConfig";
 import { closeSidebar } from "../../sidebarFunctions";
 import Header from "../Header/Header";
-
-async function validateHuman(token) {
-  const secret = process.env.REACT_APP_RECAPTCHA_SECRET_KEY;
-  await fetch(
-    `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`,
-    {
-      method: "POST",
-    }
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      return data.success;
-    })
-    .catch((error) => {
-      return false;
-    });
-}
 
 function AlertMessage() {
   return (
@@ -45,74 +26,17 @@ function Contact() {
       },
       true
     );
-    return () => {};
   }, []);
 
-  const [formData, setFormData] = useState({});
-  const reRef = useRef();
-
-  const updateInput = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const token = await reRef.current.executeAsync();
-    reRef.current.reset();
-    const human = await validateHuman(token);
-    if (!human) {
-      document.getElementById("alert-message").classList.remove("hidden");
-      document
-        .getElementById("alert-message")
-        .classList.add("bg-red-100", "border-red-400", "text-red-700");
-      document.getElementById("alert-boldTitle").innerText = "Oh No!";
-      document.getElementById("alert-regularTitle").innerText =
-        "Please contact me at jml312@case.edu instead.";
-    } else {
-      sendEmail();
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-      });
-    }
-  };
-
-  const sendEmail = async () => {
-    Axios.post(
-      "https://us-central1-portfolio-d4c23.cloudfunctions.net/submit",
-      formData,
-      { headers: { "Access-Control-Allow-Origin": "*" } }
-    )
-      .then(() => {
-        db.collection("contacts").add({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          time: new Date(),
-        });
-      })
-      .then(() => {
-        document.getElementById("alert-message").classList.remove("hidden");
-        document
-          .getElementById("alert-message")
-          .classList.add("bg-green-100", "border-green-400", "text-green-700");
-        document.getElementById("alert-boldTitle").innerText = "Success 🎉";
-        document.getElementById("alert-regularTitle").innerText =
-          "I'll get back to you shortly.";
-      })
-      .catch(() => {
-        document.getElementById("alert-message").classList.remove("hidden");
-        document
-          .getElementById("alert-message")
-          .classList.add("bg-red-100", "border-red-400", "text-red-700");
-        document.getElementById("alert-boldTitle").innerText = "Oh No!";
-        document.getElementById("alert-regularTitle").innerText =
-          "Please contact me at jml312@case.edu instead.";
-      });
+    document.getElementById("alert-message").classList.remove("hidden");
+    document
+      .getElementById("alert-message")
+      .classList.add("bg-red-100", "border-red-400", "text-red-700");
+    document.getElementById("alert-boldTitle").innerText = "Oh No!";
+    document.getElementById("alert-regularTitle").innerText =
+      "Please contact me at jml312@case.edu instead.";
   };
 
   return (
@@ -151,8 +75,6 @@ function Contact() {
                   type="text"
                   name="name"
                   placeholder="Full Name"
-                  onChange={updateInput}
-                  value={formData.name || ""}
                   required
                 />
                 <label
@@ -171,8 +93,6 @@ function Contact() {
                   type="email"
                   name="email"
                   placeholder="Email"
-                  onChange={updateInput}
-                  value={formData.email || ""}
                   required
                 />
                 <label
@@ -191,8 +111,6 @@ function Contact() {
                   type="message"
                   name="message"
                   placeholder="Message..."
-                  onChange={updateInput}
-                  value={formData.message || ""}
                   maxLength="315"
                   required
                 />
@@ -215,13 +133,6 @@ function Contact() {
             <AlertMessage />
           </form>
         </ScrollAnimation>
-        <ReCAPTCHA
-          sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-          size="invisible"
-          className="absolute bottom-0 left-auto right-auto lg:bottom-5 lg:right-5 z-50 mb-5 lg:mb-0"
-          badge="inline"
-          ref={reRef}
-        />
       </div>
     </section>
   );

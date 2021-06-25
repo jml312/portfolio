@@ -33,7 +33,7 @@ module.exports = {
       scale: {
         115: "1.15",
       },
-      backgroundImage: (theme) => ({
+      backgroundImage: () => ({
         bodyImage: "url('/src/background.png')",
       }),
     },

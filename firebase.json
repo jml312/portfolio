@@ -1,12 +1,6 @@
 {
-  "rewrites": [
-    {
-      "source": "https://us-central1-portfolio-d4c23.cloudfunctions.net",
-      "function": "submit"
-    }
-  ],
   "hosting": {
-    "public": "public",
+    "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -18,8 +12,5 @@
         "destination": "/index.html"
       }
     ]
-  },
-  "functions": {
-    "source": "functions"
   }
 }
