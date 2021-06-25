@@ -6,10 +6,9 @@
     }
   ],
   "hosting": {
-    "public": "build",
+    "public": "public",
     "ignore": [
       "firebase.json",
-      ".env",
       "**/.*",
       "**/node_modules/**"
     ],
@@ -19,5 +18,8 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "functions": {
+    "source": "functions"
   }
 }
