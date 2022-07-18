@@ -1,0 +1,65 @@
+{
+  "private": true,
+  "description": "",
+  "repository": "https://github.com/jml312/portfolio",
+  "author": "Josh Levy",
+  "license": "MIT",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start",
+    "lint": "next lint",
+    "sanity-start": "cd sanity && sanity start",
+    "sitemap-gen": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-sitemap.mjs",
+    "pageviews-gen": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-pageviews.mjs",
+    "postbuild": "npm run sitemap-gen && npm run pageviews-gen"
+
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-sans": "^4.5.11",
+    "@hcaptcha/react-hcaptcha": "^1.1.0",
+    "@portabletext/react": "^1.0.6",
+    "@react-three/drei": "^8.16.5",
+    "@react-three/fiber": "^7.0.26",
+    "@sanity/client": "^2.23.2",
+    "@sanity/image-url": "^1.0.1",
+    "@stripe/stripe-js": "^1.29.0",
+    "cookie": "^0.5.0",
+    "framer-motion": "^6.4.3",
+    "fuse.js": "^6.6.2",
+    "jsonwebtoken": "^8.5.1",
+    "next": "^12.2.2",
+    "next-seo": "^4.26.0",
+    "next-themes": "^0.0.15",
+    "node-fetch": "^2.6.1",
+    "react": "^17.0.2",
+    "react-click-away-listener": "^2.0.5",
+    "react-code-blocks": "^0.0.9-0",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.24.1",
+    "react-icons": "^4.3.1",
+    "react-toastify": "^9.0.1",
+    "smoothscroll-polyfill": "^0.4.4",
+    "stripe": "^9.1.0",
+    "tailwindcss": "^3.0.23",
+    "wakatime-client": "^2.7.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.3",
+    "autoprefixer": "^10.4.7",
+    "bad-words": "^3.0.4",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.8.0",
+    "eslint-config-next": "^12.0.10",
+    "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
+    "reading-time": "^1.5.0",
+    "slugify": "^1.6.5"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "none"
+  }
+}

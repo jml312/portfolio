@@ -1,0 +1,6 @@
+node_modules
+sanity.json
+dist
+static
+plugins
+config
