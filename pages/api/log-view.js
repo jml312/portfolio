@@ -13,6 +13,10 @@ export default async function handler(req, res) {
     return res.status(400).send("IP or slug is missing or invalid");
   }
 
+  if (ip in [process.env.SERVER_IP_1, process.env.SERVER_IP_2]) {
+    return res.status(400).send("Server IP");
+  }
+
   try {
     const foundDoc = await client.fetch(hasIpQuery, {
       ip,
@@ -33,10 +37,7 @@ export default async function handler(req, res) {
         ])
         .commit();
     } else {
-      await client
-        .patch(slug)
-        .inc({ views: 1 })
-        .commit();
+      await client.patch(slug).inc({ views: 1 }).commit();
     }
 
     return res.status(200).json({ success: true });
