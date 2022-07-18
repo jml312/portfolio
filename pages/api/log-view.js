@@ -5,8 +5,14 @@ import { sign, verify } from "jsonwebtoken";
 import { hasIpQuery } from "lib/queries.mjs";
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
+  if (req.method !== "GET") {
     return res.status(405).send("Method Not Allowed");
+  }
+
+  const slug = req?.query?.slug;
+
+  if (!slug) {
+    return res.status(400).send("No Slug");
   }
 
   const token = parse(req.headers.cookie || "")?.token;
@@ -17,16 +23,12 @@ export default async function handler(req, res) {
     try {
       const {
         ip,
-        location: { latitude, longitude, city, isoPrincipalSubdivision }
+        location: { latitude, longitude }
       } = await (
         await fetch(
           `https://api.bigdatacloud.net/data/ip-geolocation?key=${process.env.IP_LOCATION_API_KEY}`
         )
       ).json();
-
-      if (city === "Ashburn" && isoPrincipalSubdivision === "Virginia") {
-        return res.status(200);
-      }
 
       location = {
         ip: ip.toString(),
@@ -47,8 +49,6 @@ export default async function handler(req, res) {
       return res.status(500).json({ success: false });
     }
   }
-
-  const { slug } = req.body;
 
   try {
     const foundDoc = await client.fetch(hasIpQuery, {
@@ -75,7 +75,7 @@ export default async function handler(req, res) {
     }
 
     return res.status(200).json({ success: true });
-  } catch {
-    return res.status(500).json({ success: false });
+  } catch (e) {
+    return res.status(500).json({ success: false, message: e.message, e });
   }
 }

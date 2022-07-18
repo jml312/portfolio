@@ -1,18 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import useSWR from "swr";
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function Location({ value }) {
-  const [location, setLocation] = useState(value?.ip);
-  useEffect(() => {
-    const getLocation = async () => {
-      try {
-        const response = await fetch(`http://ip-api.com/json/${value?.ip}`);
-        const { city, region } = await response.json();
-        setLocation(`${city}, ${region}`);
-      } catch {
-        setLocation(value?.ip);
-      }
-    };
-    getLocation();
-  }, []);
-  return <span>{location}</span>;
+  const { data } = useSWR(`http://ip-api.com/json/${value?.ip}`, fetcher);
+  const location = `${data?.city}, ${data?.region}, ${data?.countryCode}`;
+  return <span>{location || value?.ip}</span>;
 }
