@@ -35,18 +35,6 @@ export default {
           type: "object",
           fields: [
             {
-              title: "Latitude",
-              name: "lat",
-              type: "string",
-              readOnly: true
-            },
-            {
-              title: "Longitude",
-              name: "long",
-              type: "string",
-              readOnly: true
-            },
-            {
               title: "IP",
               name: "ip",
               type: "string",
