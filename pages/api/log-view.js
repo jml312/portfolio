@@ -22,6 +22,7 @@ export default async function handler(req, res) {
     if (!foundDoc) {
       await client
         .patch(slug)
+        .setIfMissing({ locations: [], views: 0 })
         .inc({ views: 1 })
         .append("locations", [
           {
@@ -32,7 +33,11 @@ export default async function handler(req, res) {
         ])
         .commit();
     } else {
-      await client.patch(slug).inc({ views: 1 }).commit();
+      await client
+        .patch(slug)
+        .setIfMissing({ views: 0 })
+        .inc({ views: 1 })
+        .commit();
     }
 
     return res.status(200).json({ success: true });

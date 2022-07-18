@@ -12,7 +12,8 @@
     "sanity-start": "cd sanity && sanity start",
     "sitemap-gen": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-sitemap.mjs",
     "pageviews-gen": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-pageviews.mjs",
-    "postbuild": "npm run sitemap-gen && npm run pageviews-gen"
+    "postbuild": "npm run sitemap-gen && npm run pageviews-gen",
+    "remove-server-pageviews": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/remove-server-pageviews.mjs"
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans": "^4.5.11",
