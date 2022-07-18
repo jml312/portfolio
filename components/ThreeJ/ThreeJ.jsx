@@ -6,7 +6,7 @@ function ThreeJ({ theme }) {
   return (
     <Canvas
       camera={{ position: [0, 0, 1.5], fov: 15 }}
-      className={"bg-transparent"}
+      onCreated={(state) => state.gl.setClearColor(0x000000, 0)}
     >
       <ambientLight
         color={theme === "light" ? "rgb(28,29,37)" : "rgb(255,255,245)"}
