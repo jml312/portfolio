@@ -4,7 +4,10 @@ import { useGLTF, OrbitControls } from "@react-three/drei";
 
 function ThreeJ({ theme }) {
   return (
-    <Canvas camera={{ position: [0, 0, 1.5], fov: 15 }}>
+    <Canvas
+      camera={{ position: [0, 0, 1.5], fov: 15 }}
+      className={"bg-transparent"}
+    >
       <ambientLight
         color={theme === "light" ? "rgb(28,29,37)" : "rgb(255,255,245)"}
       />

@@ -105,7 +105,7 @@ function Home({
             </button>
           </div>
         </div>
-        <div className={"h-2/5 w-[26.5vh] translate-y-3.5"}>
+        <div className={"h-2/5 w-[26.5vh] translate-y-3.5 bg-transparent"}>
           <ThreeJ theme={theme} />
         </div>
         <div
