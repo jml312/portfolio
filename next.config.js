@@ -5,6 +5,6 @@ module.exports = {
     domains: ["cdn.sanity.io"]
   },
   experimental: {
-    images: { allowFutureImage: true, esmExternals: true }
+    images: { allowFutureImage: true }
   }
 };

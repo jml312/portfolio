@@ -1,5 +1,5 @@
 import client from "lib/sanity.mjs";
-import { urlForImage } from "utils/urlForImage";
+import urlForImage from "utils/urlForImage";
 import { PortableText } from "@portabletext/react";
 import readingTime from "reading-time";
 import { useState, useRef } from "react";
