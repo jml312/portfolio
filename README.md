@@ -13,6 +13,7 @@
 
 
 ## Run Locally
+Create a `.env.local` file similar to [`.env.example`](https://github.com/jml312/portfolio/blob/main/.env.example).
 
 ```bash
 $ git clone https://github.com/jml312/portfolio.git
@@ -20,5 +21,3 @@ $ cd portfolio
 $ npm i
 $ npm run dev
 ```
-
-Create a `.env` file similar to [`.env.example`](https://github.com/jml312/portfolio/blob/main/.env.example).
