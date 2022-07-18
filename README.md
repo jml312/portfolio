@@ -7,7 +7,7 @@
 - **Animation**: [Framer Motion](https://www.framer.com/motion/)
 - **Deployment**: [Vercel](https://vercel.com)
 
-![App Screenshot](https://www.joshlevy.io/assets/joshlevyio.png)
+![App Screenshot](https://s4.gifyu.com/images/6n6hoe.gif)
 
 
 
