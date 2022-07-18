@@ -17,12 +17,17 @@ export default async function handler(req, res) {
     try {
       const {
         ip,
-        location: { latitude, longitude }
+        location: { latitude, longitude, city, isoPrincipalSubdivisionCode }
       } = await (
         await fetch(
           `https://api.bigdatacloud.net/data/ip-geolocation?key=${process.env.IP_LOCATION_API_KEY}`
         )
       ).json();
+
+      if (city === "Ashburn" && isoPrincipalSubdivisionCode === "VA") {
+        return res.status(200);
+      }
+
       location = {
         ip: ip.toString(),
         lat: latitude.toString(),
