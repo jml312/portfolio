@@ -13,10 +13,6 @@ export default async function handler(req, res) {
     return res.status(400).send("IP or slug is missing or invalid");
   }
 
-  if (ip in [process.env.SERVER_IP_1, process.env.SERVER_IP_2]) {
-    return res.status(400).send("Server IP");
-  }
-
   try {
     const foundDoc = await client.fetch(hasIpQuery, {
       ip,
