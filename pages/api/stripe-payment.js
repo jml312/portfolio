@@ -1,5 +1,6 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const { BASE_URL } = require("../../constants/index.mjs");
+import { BASE_URL } from "../../constants/index.mjs";
+import stripe from "stripe";
+const stripeClient = new stripe(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -15,7 +16,7 @@ export default async function handler(req, res) {
       },
       quantity: 1
     };
-    const session = await stripe.checkout.sessions.create({
+    const session = await stripeClient.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [item],
       mode: "payment",
