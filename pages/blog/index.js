@@ -149,7 +149,7 @@ export default function Blog({ blogPosts, allTags }) {
                   }}
                 />
                 <div
-                  className={`text-[.85rem] sm:text-[.9rem] text-center cursor-pointer rounded-md px-2 py-0.5 outline outline-dark dark:outline-light outline-1 peer-checked:outline-[2.5px] dark:peer-checked:outline-[2.5px] dark:bg-dark bg-light active:scale-95`}
+                  className={`text-[.85rem] sm:text-[.9rem] text-center cursor-pointer rounded-md px-2 py-0.5 ring-dark dark:ring-light ring-1 peer-checked:ring-[2.5px] dark:peer-checked:ring-[2.5px] dark:bg-dark bg-light active:scale-95`}
                 >
                   {tag}
                 </div>
