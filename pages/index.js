@@ -233,7 +233,7 @@ export default function HomePage({
                   duration: 0.2,
                   ease: "easeInOut"
                 }}
-                className={`min-h-screen big:min-h-0 flex flex-col-reverse justify-center items-center big:fixed big:top-1/2 big:left-1/2 big:-translate-x-1/2 big:-translate-y-1/2 big:h-[90%] big:w-[45vw] big:min-w-[50%] big:max-w-[50%] bg-transparent z-50`}
+                className={`min-h-screen big:min-h-0 flex flex-col-reverse justify-center items-center big:fixed big:top-1/2 big:left-1/2 big:-translate-x-1/2 big:-translate-y-1/2 big:h-[90%] big:w-[45vw] big:min-w-[50%] big:max-w-[50%] bg-transparent`}
               >
                 <About
                   isBig={isBig}

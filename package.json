@@ -12,8 +12,7 @@
     "sanity-start": "cd sanity && sanity start",
     "sitemap-gen": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-sitemap.mjs",
     "pageviews-gen": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-pageviews.mjs",
-    "postbuild": "npm run sitemap-gen && npm run pageviews-gen",
-    "remove-server-pageviews": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/remove-server-pageviews.mjs"
+    "postbuild": "npm run sitemap-gen && npm run pageviews-gen"
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans": "^4.5.11",
@@ -24,6 +23,7 @@
     "@sanity/client": "^2.23.2",
     "@sanity/image-url": "^1.0.1",
     "@stripe/stripe-js": "^1.29.0",
+    "detect-browser": "^5.3.0",
     "framer-motion": "^6.4.3",
     "fuse.js": "^6.6.2",
     "is-ip": "^4.0.0",

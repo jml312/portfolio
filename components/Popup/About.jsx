@@ -162,7 +162,7 @@ function About({ isBig, HCaptchaLoading, bio, links, prefersReducedMotion }) {
         >
           <p
             className={
-              "text-[.95rem] sm:text-[1rem] leading-[1.7] inline-block"
+              "text-[.95rem] sm:text-[1rem] leading-[1.7] inline-block text-justify"
             }
           >
             <PortableText
@@ -188,7 +188,7 @@ function About({ isBig, HCaptchaLoading, bio, links, prefersReducedMotion }) {
           </p>
           <div
             className={
-              "grid grid-cols-3 grid-rows-1 w-[72.5%] big:w-3/4 gap-9 self-center -mt-1.5 big:-mt-1"
+              "grid grid-cols-3 grid-rows-1 w-[72.5%] big:w-3/4 gap-9 self-center -mt-2"
             }
           >
             {skills.map(({ Icon, name, href }) => (

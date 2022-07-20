@@ -28,7 +28,7 @@ function ProjectCard({
         borderRadius: "0.375rem"
       }}
       viewport={{ once: true }}
-      className={`bg-light dark:bg-dark border border-gray-700 dark:border-gray-300 text-dark dark:text-light p-3.5 flex flex-col text-center sm:text-left gap-8 z-40 min-h-[10.75rem] relative drop-shadow-lg rounded-md min-w-[21rem] sm:min-w-0 md:max-w-[23.25rem] w-[90%] sm:w-full`}
+      className={`bg-light dark:bg-dark border border-gray-700 dark:border-gray-300 text-dark dark:text-light p-3.5 flex flex-col text-center sm:text-left gap-8 min-h-[10.75rem] relative drop-shadow-lg rounded-md min-w-[21rem] sm:min-w-0 md:max-w-[23.25rem] w-[90%] sm:w-full`}
     >
       <div className={"flex flex-col justify-between h-full gap-1.5"}>
         <span className={"flex justify-between"}>

@@ -9,13 +9,12 @@ import { useEffect } from "react";
 import { polyfill } from "smoothscroll-polyfill";
 import { LazyMotion, MotionConfig } from "framer-motion";
 import useLogPageView from "hooks/useLogPageView";
-
-const framerMotionFeatures = () =>
-  import("framerMotionFeatures").then((res) => res.default);
+import { useRouter } from "next/router";
+import getPageSlug from "utils/getPageSlug";
 
 function App({ Component, pageProps }) {
   useEffect(() => polyfill(), []);
-  useLogPageView();
+  useLogPageView(getPageSlug(useRouter().asPath));
 
   return (
     <ThemeProvider
@@ -24,7 +23,14 @@ function App({ Component, pageProps }) {
       defaultTheme="dark"
       enableSystem={false}
     >
-      <LazyMotion features={framerMotionFeatures} strict>
+      <LazyMotion
+        features={() =>
+          import("framerMotionFeatures").then(
+            ({ default: features }) => features
+          )
+        }
+        strict
+      >
         <MotionConfig reducedMotion="user">
           <Component {...pageProps} />
         </MotionConfig>

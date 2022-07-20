@@ -8,52 +8,86 @@ export default {
     {
       name: "page",
       title: "Page",
-      type: "string",
-      readOnly: true
+      type: "string"
     },
     {
       name: "slug",
       title: "Slug",
-      type: "string",
-      readOnly: true
+      type: "string"
     },
     {
       name: "views",
       title: "Views",
       type: "number",
-      readOnly: true,
+
       initialValue: 0
     },
     {
       name: "locations",
       title: "Locations",
       type: "array",
-      readOnly: true,
+
       initialValue: [],
       of: [
         {
           type: "object",
           fields: [
             {
-              title: "IP",
-              name: "ip",
+              title: "Long Name",
+              name: "longName",
+              type: "string"
+            },
+            {
+              title: "Short Name",
+              name: "shortName",
+              type: "string"
+            },
+            {
+              title: "Lat, Long",
+              name: "latLong",
+              type: "string"
+            },
+            {
+              title: "Device",
+              name: "device",
               type: "string",
-              readOnly: true
+              options: {
+                list: ["Mobile", "Tablet", "Laptop", "Desktop"]
+              }
+            },
+            {
+              title: "OS",
+              name: "os",
+              type: "string"
+            },
+            {
+              title: "Browser",
+              name: "browser",
+              type: "string"
+            },
+            {
+              title: "Referrer",
+              name: "referrer",
+              type: "string"
             },
             {
               title: "Date",
               name: "date",
-              type: "datetime",
-              readOnly: true
+              type: "datetime"
+            },
+            {
+              title: "IP",
+              name: "ip",
+              type: "string"
             }
           ],
           preview: {
             select: {
-              ip: "ip"
+              longName: "longName"
             },
-            prepare({ ip }) {
+            prepare({ longName }) {
               return {
-                ip
+                longName
               };
             },
             component: Location
@@ -67,7 +101,6 @@ export default {
       title: "Blog Ref",
       type: "reference",
       to: [{ type: "blog" }],
-      readOnly: true,
       hidden: ({ document }) => ["Home", "Blog"].includes(document.page)
     }
   ],

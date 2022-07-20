@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import useScrollSpy from "hooks/useScrollSpy";
 import useThemeIcon from "hooks/useThemeIcon";
-import { m, useAnimation } from "framer-motion";
+import { m } from "framer-motion";
 
 function Navigation({
   theme,
@@ -19,22 +19,16 @@ function Navigation({
   });
   const ThemeIcon = useThemeIcon(theme);
   const [isColliding, setIsColliding] = useState(false);
-  const controls = useAnimation();
 
-  const isOverlapping = () => {
+  const isOverlapping = useCallback(() => {
     if (!navRef.current || !footerRef.current) return null;
     return (
       navRef.current.getBoundingClientRect().bottom >=
       footerRef.current.getBoundingClientRect().top
     );
-  };
+  }, [navRef, footerRef]);
 
   useEffect(() => {
-    if (isOverlapping()) {
-      navRef.current.style.opacity = 0;
-      navRef.current.style.pointerEvents = "none";
-      setIsColliding(true);
-    }
     document.addEventListener("scroll", () => setIsColliding(isOverlapping()), {
       passive: true
     });
@@ -49,52 +43,33 @@ function Navigation({
     };
   }, []);
 
-  useEffect(() => {
-    if (popupOpen) {
-      controls.start({
-        opacity: 0,
-        pointerEvents: "none",
-        transition: { duration: 0 }
-      });
-    } else {
-      controls.start({
-        opacity: 1,
-        pointerEvents: "auto",
-        transition: {
-          duration: 0.1,
-          delay: 0.2,
-          ease: "backIn",
-          type: "tween"
-        }
-      });
-    }
-  }, [popupOpen]);
-
-  useEffect(() => {
-    if (isColliding) {
-      controls.start({
-        opacity: 0,
-        pointerEvents: "none",
-        transition: { duration: 0 }
-      });
-    } else {
-      controls.start({
-        opacity: 1,
-        pointerEvents: "auto",
-        transition: {
-          duration: 0
-        }
-      });
-    }
-  }, [isColliding]);
-
   return (
     <m.nav
-      animate={controls}
-      ref={navRef}
-      className={
-        "fixed -translate-x-1/2 bottom-[4%] left-1/2 w-max py-3 px-4 rounded-full z-50 flex justify-between items-center gap-3 sm:gap-5 lg:gap-6 bg-[rgba(28,29,37,0.5)] dark:bg-[rgba(255,255,245,0.5)] text-light dark:text-dark backdrop-blur-lg"
+      animate={
+        isColliding || popupOpen
+          ? {
+              opacity: popupOpen ? 0 : 1,
+              pointerEvents: "none"
+            }
+          : {
+              opacity: 1,
+              pointerEvents: "auto"
+            }
       }
+      transition={
+        !popupOpen
+          ? {
+              duration: 0.1,
+              delay: 0.2,
+              ease: "backIn",
+              type: "tween"
+            }
+          : { duration: 0 }
+      }
+      ref={navRef}
+      className={`fixed -translate-x-1/2 bottom-[4%] left-1/2 w-max py-3 px-4 rounded-full flex justify-between items-center gap-3 sm:gap-5 lg:gap-6 bg-[rgba(28,29,37,0.5)] dark:bg-[rgba(255,255,245,0.5)] text-light dark:text-dark backdrop-blur-lg ${
+        isColliding || popupOpen ? "z-[-1]" : "z-50"
+      }`}
     >
       {sections.map(({ name, Icon, onClick }, i) => (
         <button

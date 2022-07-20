@@ -7,10 +7,44 @@ export default async function handler(req, res) {
     return res.status(405).send("Method Not Allowed");
   }
 
-  const { ip, slug } = req.query;
+  const {
+    ip,
+    slug,
+    date,
+    device,
+    referrer,
+    os,
+    browser,
+    city,
+    region,
+    country_name,
+    region_code,
+    country_code,
+    latitude,
+    longitude
+  } = req.query;
 
-  if (!isIP(ip) || !slug) {
-    return res.status(400).send("IP or slug is missing or invalid");
+  if (
+    !isIP(ip) ||
+    !slug ||
+    !date ||
+    !device ||
+    !referrer ||
+    !os ||
+    !browser ||
+    !city ||
+    !region ||
+    !country_name ||
+    !region_code ||
+    !country_code ||
+    !latitude ||
+    !longitude
+  ) {
+    return res.status(400).send("Query parameters are missing");
+  }
+
+  if (process.env.PERSONAL_IPS.split(",").includes(ip)) {
+    return res.status(200).send("Personal IP");
   }
 
   try {
@@ -18,17 +52,22 @@ export default async function handler(req, res) {
       ip,
       slug
     });
-
     if (!foundDoc) {
       await client
         .patch(slug)
-        .setIfMissing({ locations: [] })
         .inc({ views: 1 })
         .append("locations", [
           {
             _key: ip,
             ip,
-            date: new Date().toISOString()
+            date,
+            device,
+            referrer,
+            os,
+            browser,
+            latLong: `${latitude},${longitude}`,
+            shortName: `${city}, ${region_code}, ${country_code}`,
+            longName: `${city}, ${region}, ${country_name}`
           }
         ])
         .commit();

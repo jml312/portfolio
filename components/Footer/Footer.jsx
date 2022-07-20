@@ -27,7 +27,7 @@ function Footer({
   return (
     <footer
       ref={footerRef}
-      className={`flex flex-col justify-center items-center gap-8 w-screen py-10 bg-dark dark:bg-light text-light dark:text-dark text-center mb-0 ${marginTop}`}
+      className={`z-50 flex flex-col justify-center items-center gap-8 w-screen py-10 bg-dark dark:bg-light text-light dark:text-dark text-center mb-0 ${marginTop}`}
     >
       <J />
       <div className="flex flex-wrap items-center justify-center gap-5">

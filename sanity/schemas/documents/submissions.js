@@ -6,32 +6,27 @@ export default {
     {
       name: "name",
       title: "Name",
-      type: "string",
-      readOnly: true
+      type: "string"
     },
     {
       name: "email",
       title: "Email",
-      type: "string",
-      readOnly: true
+      type: "string"
     },
     {
       name: "message",
       title: "Message",
-      type: "text",
-      readOnly: true
+      type: "text"
     },
     {
       name: "date",
       title: "Date",
-      type: "datetime",
-      readOnly: true
+      type: "datetime"
     },
     {
       name: "isRead",
       title: "Is Read",
       type: "boolean",
-      readOnly: true,
       initialValue: false
     }
   ]
