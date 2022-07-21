@@ -33,13 +33,28 @@ export default {
           type: "object",
           fields: [
             {
-              title: "Long Name",
-              name: "longName",
+              title: "City",
+              name: "city",
               type: "string"
             },
             {
-              title: "Short Name",
-              name: "shortName",
+              title: "Region",
+              name: "region",
+              type: "string"
+            },
+            {
+              title: "Region Code",
+              name: "regionCode",
+              type: "string"
+            },
+            {
+              title: "Country Name",
+              name: "countryName",
+              type: "string"
+            },
+            {
+              title: "Country Code",
+              name: "countryCode",
               type: "string"
             },
             {
@@ -83,11 +98,13 @@ export default {
           ],
           preview: {
             select: {
-              longName: "longName"
+              city: "city",
+              region: "region",
+              countryName: "countryName"
             },
-            prepare({ longName }) {
+            prepare({ city, region, countryName }) {
               return {
-                longName
+                title: `${city}, ${region}, ${countryName}`
               };
             },
             component: Location

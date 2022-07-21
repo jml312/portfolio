@@ -1,6 +1,8 @@
 import client from "lib/sanity.mjs";
 import { hasIpQuery } from "lib/queries.mjs";
 import { isIP } from "is-ip";
+import { serialize } from "cookie";
+import { sign } from "jsonwebtoken";
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
@@ -65,15 +67,44 @@ export default async function handler(req, res) {
             referrer,
             os,
             browser,
-            latLong: `${latitude},${longitude}`,
-            shortName: `${city}, ${region_code}, ${country_code}`,
-            longName: `${city}, ${region}, ${country_name}`
+            latLong: `${latitude}, ${longitude}`,
+            city,
+            region,
+            regionCode: region_code,
+            countryName: country_name,
+            countryCode: country_code
           }
         ])
         .commit();
     } else {
       await client.patch(slug).inc({ views: 1 }).commit();
     }
+
+    const token = sign(
+      {
+        ip,
+        city,
+        region,
+        country_name,
+        region_code,
+        country_code,
+        latitude,
+        longitude,
+        os,
+        browser,
+        device
+      },
+      process.env.JWT_SECRET
+    );
+    res.setHeader(
+      "Set-Cookie",
+      serialize("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict",
+        maxAge: 34560000
+      })
+    );
 
     return res.status(200).json({ success: true });
   } catch {
