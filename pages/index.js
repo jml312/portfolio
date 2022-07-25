@@ -25,7 +25,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoMdClose } from "react-icons/io";
 import { getTopTracks, getWakaTimeStats } from "utils/metrics";
-import { BASE_URL, MANAGEMENT_URL } from "constants/index.mjs";
+import { BASE_URL, MANAGE_URL } from "constants/index.mjs";
 import StripeLoader from "components/StripeLoader";
 import { NextSeo } from "next-seo";
 import { IndexSEO } from "seo";
@@ -335,7 +335,7 @@ export default function HomePage({
               ...links,
               {
                 name: "Analytics",
-                href: MANAGEMENT_URL,
+                href: MANAGE_URL,
                 Icon: TbDeviceAnalytics,
                 isExternal: true
               }

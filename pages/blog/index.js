@@ -14,7 +14,7 @@ import { NextSeo } from "next-seo";
 import { BlogSEO } from "seo";
 import { blogPageQuery } from "lib/queries.mjs";
 import { TbDeviceAnalytics } from "react-icons/tb";
-import { MANAGEMENT_URL } from "constants";
+import { MANAGE_URL } from "constants";
 
 export default function Blog({ blogPosts, allTags }) {
   const footerRef = useRef();
@@ -247,7 +247,7 @@ export default function Blog({ blogPosts, allTags }) {
             },
             {
               name: "Analytics",
-              href: MANAGEMENT_URL,
+              href: MANAGE_URL,
               Icon: TbDeviceAnalytics,
               isExternal: true
             }

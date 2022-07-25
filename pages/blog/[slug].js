@@ -18,7 +18,7 @@ import ArticleCard from "components/Articles/ArticleCard";
 import { CopyBlock, atomOneDark, atomOneLight } from "react-code-blocks";
 import BlogNav from "components/BlogNav";
 import Image from "next/future/image";
-import { LIVE, MANAGEMENT_URL } from "constants";
+import { LIVE, MANAGE_URL } from "constants";
 import { NextSeo } from "next-seo";
 import { BlogSEO } from "seo";
 import { articlePageQuery, blogSlugsQuery } from "lib/queries.mjs";
@@ -251,7 +251,7 @@ export default function Article({
             },
             {
               name: "Analytics",
-              href: MANAGEMENT_URL,
+              href: MANAGE_URL,
               Icon: TbDeviceAnalytics,
               isExternal: true
             }
