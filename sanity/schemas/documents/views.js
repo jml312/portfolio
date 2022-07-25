@@ -16,22 +16,25 @@ export default {
       type: "string"
     },
     {
-      name: "views",
-      title: "Views",
-      type: "number",
-
-      initialValue: 0
-    },
-    {
-      name: "locations",
-      title: "Locations",
+      name: "visitors",
+      title: "Visitors",
       type: "array",
-
       initialValue: [],
       of: [
         {
           type: "object",
           fields: [
+            {
+              name: "viewDates",
+              title: "View Dates",
+              type: "array",
+              initialValue: [],
+              of: [
+                {
+                  type: "datetime"
+                }
+              ]
+            },
             {
               title: "City",
               name: "city",
@@ -86,11 +89,6 @@ export default {
               type: "string"
             },
             {
-              title: "Date",
-              name: "date",
-              type: "datetime"
-            },
-            {
               title: "IP",
               name: "ip",
               type: "string"
@@ -100,11 +98,15 @@ export default {
             select: {
               city: "city",
               region: "region",
-              countryName: "countryName"
+              countryName: "countryName",
+              viewDates: "viewDates"
             },
-            prepare({ city, region, countryName }) {
+            prepare({ city, region, countryName, viewDates }) {
+              const viewCount = viewDates.length;
               return {
-                title: `${city}, ${region}, ${countryName}`
+                title: `${city}, ${region}, ${countryName} - ${viewCount} view${
+                  viewCount === 1 ? "" : "s"
+                }`
               };
             },
             component: Location
@@ -112,7 +114,6 @@ export default {
         }
       ]
     },
-
     {
       name: "blogRef",
       title: "Blog Ref",
@@ -124,10 +125,16 @@ export default {
   preview: {
     select: {
       page: "page",
-      views: "views"
+      visitors: "visitors"
     },
-    prepare({ page, views }) {
-      return { title: `${page} - ${views} view${views === 1 ? "" : "s"}` };
+    prepare({ page, visitors }) {
+      const viewCount = visitors.reduce(
+        (acc, curr) => acc + curr.viewDates.length,
+        0
+      );
+      return {
+        title: `${page} - ${viewCount} view${viewCount === 1 ? "" : "s"}`
+      };
     }
   }
 };

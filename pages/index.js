@@ -25,11 +25,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoMdClose } from "react-icons/io";
 import { getTopTracks, getWakaTimeStats } from "utils/metrics";
-import { BASE_URL } from "constants/index.mjs";
+import { BASE_URL, MANAGEMENT_URL } from "constants/index.mjs";
 import StripeLoader from "components/StripeLoader";
 import { NextSeo } from "next-seo";
 import { IndexSEO } from "seo";
 import { indexPageQuery } from "lib/queries.mjs";
+import { TbDeviceAnalytics } from "react-icons/tb";
 
 export default function HomePage({
   blogPosts,
@@ -239,7 +240,7 @@ export default function HomePage({
                   isBig={isBig}
                   HCaptchaLoading={HCaptchaLoading}
                   bio={bio}
-                  links={links}
+                  links={links.slice(0, 3)}
                   prefersReducedMotion={prefersReducedMotion}
                 />
                 <Contact
@@ -330,7 +331,15 @@ export default function HomePage({
           </div>
           <Footer
             footerRef={footerRef}
-            links={links}
+            links={[
+              ...links,
+              {
+                name: "Analytics",
+                href: MANAGEMENT_URL,
+                Icon: TbDeviceAnalytics,
+                isExternal: true
+              }
+            ]}
             isStripeLoading={isStripeLoading}
             setIsStripeLoading={setIsStripeLoading}
             useTransition={useTransition}

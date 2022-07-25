@@ -45,24 +45,16 @@ export default async function handler(req, res) {
     return res.status(400).send("Query parameters are missing");
   }
 
-  if (process.env.PERSONAL_IPS.split(",").includes(ip)) {
-    return res.status(200).send("Personal IP");
-  }
-
   try {
-    const foundDoc = await client.fetch(hasIpQuery, {
-      ip,
-      slug
-    });
+    const foundDoc = await client.fetch(hasIpQuery, { ip, slug });
     if (!foundDoc) {
       await client
         .patch(slug)
-        .inc({ views: 1 })
-        .append("locations", [
+        .append("visitors", [
           {
             _key: ip,
+            viewDates: [date],
             ip,
-            date,
             device,
             referrer,
             os,
@@ -77,7 +69,10 @@ export default async function handler(req, res) {
         ])
         .commit();
     } else {
-      await client.patch(slug).inc({ views: 1 }).commit();
+      await client
+        .patch(slug)
+        .insert("after", `visitors[_key == \"${ip}\"].viewDates[-1]`, [date])
+        .commit();
     }
 
     const token = sign(

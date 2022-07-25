@@ -26,8 +26,7 @@ async function generate() {
         _type: "pageViews",
         page: title,
         slug,
-        views: 0,
-        locations: [],
+        visitors: [],
         blogRef: { _type: "reference", _ref: _id }
       });
     })

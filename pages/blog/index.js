@@ -13,6 +13,8 @@ import Fuse from "fuse.js";
 import { NextSeo } from "next-seo";
 import { BlogSEO } from "seo";
 import { blogPageQuery } from "lib/queries.mjs";
+import { TbDeviceAnalytics } from "react-icons/tb";
+import { MANAGEMENT_URL } from "constants";
 
 export default function Blog({ blogPosts, allTags }) {
   const footerRef = useRef();
@@ -242,6 +244,12 @@ export default function Blog({ blogPosts, allTags }) {
               href: "/",
               Icon: AiOutlineHome,
               isExternal: false
+            },
+            {
+              name: "Analytics",
+              href: MANAGEMENT_URL,
+              Icon: TbDeviceAnalytics,
+              isExternal: true
             }
           ]}
           isStripeLoading={isStripeLoading}
