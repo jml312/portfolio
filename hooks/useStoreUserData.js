@@ -1,6 +1,7 @@
 import getDeviceType from "utils/getDeviceType";
 import { browserName, detectOS } from "detect-browser";
 import { useEffect } from "react";
+import getUnicodeFlagIcon from "country-flag-icons/unicode";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -23,6 +24,7 @@ const useStoreUserData = () => {
         const os = detectOS(userAgent);
         const browser = browserName(userAgent);
         const device = getDeviceType();
+        const flag = getUnicodeFlagIcon(country_code);
         await fetch("/api/analytics/set-user-data", {
           method: "POST",
           headers: {
@@ -33,6 +35,7 @@ const useStoreUserData = () => {
             ip,
             locationLong: `${city}, ${region}, ${country_name}`,
             locationShort: `${city}, ${region_code}, ${country_code}`,
+            flag,
             latLong: `${latitude}, ${longitude}`,
             device,
             os,

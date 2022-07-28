@@ -52,6 +52,11 @@ export default {
                       type: "string"
                     },
                     {
+                      title: "Flag",
+                      name: "flag",
+                      type: "string"
+                    },
+                    {
                       title: "Lat, Long",
                       name: "latLong",
                       type: "string"
@@ -64,11 +69,12 @@ export default {
                   ],
                   preview: {
                     select: {
-                      locationShort: "locationShort"
+                      locationShort: "locationShort",
+                      flag: "flag"
                     },
                     prepare({ locationShort }) {
                       return {
-                        title: locationShort
+                        title: `${locationShort} ${flag}`
                       };
                     }
                   }

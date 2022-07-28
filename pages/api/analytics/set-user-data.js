@@ -7,13 +7,22 @@ export default function handler(req, res) {
     return res.status(405).send("Method Not Allowed");
   }
 
-  const { ip, locationLong, locationShort, latLong, device, os, browser } =
-    req.body;
+  const {
+    ip,
+    locationLong,
+    locationShort,
+    flag,
+    latLong,
+    device,
+    os,
+    browser
+  } = req.body;
 
   if (
     !isIP(ip) ||
     !locationLong ||
     !locationShort ||
+    !flag ||
     !latLong ||
     !device ||
     !os ||
@@ -27,6 +36,7 @@ export default function handler(req, res) {
       ip,
       locationLong,
       locationShort,
+      flag,
       latLong,
       device,
       os,

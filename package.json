@@ -25,6 +25,7 @@
     "@sanity/image-url": "^1.0.1",
     "@stripe/stripe-js": "^1.29.0",
     "cookie": "^0.5.0",
+    "country-flag-icons": "^1.5.5",
     "detect-browser": "^5.3.0",
     "framer-motion": "^6.4.3",
     "fuse.js": "^6.6.2",

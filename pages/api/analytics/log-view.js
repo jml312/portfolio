@@ -14,8 +14,16 @@ export default async function handler(req, res) {
   try {
     const token = parse(req.headers.cookie)?.token;
 
-    const { ip, locationLong, locationShort, latLong, device, os, browser } =
-      verify(token, process.env.JWT_SECRET);
+    const {
+      ip,
+      locationLong,
+      locationShort,
+      flag,
+      latLong,
+      device,
+      os,
+      browser
+    } = verify(token, process.env.JWT_SECRET);
 
     if (
       !isIP(ip) ||
@@ -25,6 +33,7 @@ export default async function handler(req, res) {
       !timeSpent ||
       !locationLong ||
       !locationShort ||
+      !flag ||
       !latLong ||
       !device ||
       !os ||
@@ -45,6 +54,7 @@ export default async function handler(req, res) {
       timeSpent: Number(timeSpent),
       locationLong,
       locationShort,
+      flag,
       latLong
     };
     if (!foundDoc) {
