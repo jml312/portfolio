@@ -72,7 +72,7 @@ export default {
                       locationShort: "locationShort",
                       flag: "flag"
                     },
-                    prepare({ locationShort }) {
+                    prepare({ locationShort, flag }) {
                       return {
                         title: `${locationShort} ${flag}`
                       };
