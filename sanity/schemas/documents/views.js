@@ -1,5 +1,3 @@
-import Location from "../../components/Location";
-
 export default {
   name: "pageViews",
   title: "Views",
@@ -25,45 +23,57 @@ export default {
           type: "object",
           fields: [
             {
-              name: "viewDates",
-              title: "View Dates",
+              name: "viewings",
+              title: "Viewings",
               type: "array",
               initialValue: [],
               of: [
                 {
-                  type: "datetime"
+                  type: "object",
+                  fields: [
+                    {
+                      name: "date",
+                      title: "Date",
+                      type: "datetime"
+                    },
+                    {
+                      title: "Time Spent (s)",
+                      name: "timeSpent",
+                      type: "number"
+                    },
+                    {
+                      title: "Location (Long)",
+                      name: "locationLong",
+                      type: "string"
+                    },
+                    {
+                      title: "Location (Short)",
+                      name: "locationShort",
+                      type: "string"
+                    },
+                    {
+                      title: "Lat, Long",
+                      name: "latLong",
+                      type: "string"
+                    },
+                    {
+                      title: "Referrer",
+                      name: "referrer",
+                      type: "string"
+                    }
+                  ],
+                  preview: {
+                    select: {
+                      locationShort: "locationShort"
+                    },
+                    prepare({ locationShort }) {
+                      return {
+                        title: locationShort
+                      };
+                    }
+                  }
                 }
               ]
-            },
-            {
-              title: "City",
-              name: "city",
-              type: "string"
-            },
-            {
-              title: "Region",
-              name: "region",
-              type: "string"
-            },
-            {
-              title: "Region Code",
-              name: "regionCode",
-              type: "string"
-            },
-            {
-              title: "Country Name",
-              name: "countryName",
-              type: "string"
-            },
-            {
-              title: "Country Code",
-              name: "countryCode",
-              type: "string"
-            },
-            {
-              title: "Lat, Long",
-              name: "latLong",
-              type: "string"
             },
             {
               title: "Device",
@@ -84,11 +94,6 @@ export default {
               type: "string"
             },
             {
-              title: "Referrer",
-              name: "referrer",
-              type: "string"
-            },
-            {
               title: "IP",
               name: "ip",
               type: "string"
@@ -96,20 +101,14 @@ export default {
           ],
           preview: {
             select: {
-              city: "city",
-              region: "region",
-              countryName: "countryName",
-              viewDates: "viewDates"
+              viewings: "viewings"
             },
-            prepare({ city, region, countryName, viewDates }) {
-              const viewCount = viewDates.length;
+            prepare({ viewings }) {
+              const viewingsCount = viewings.length;
               return {
-                title: `${city}, ${region}, ${countryName} - ${viewCount} view${
-                  viewCount === 1 ? "" : "s"
-                }`
+                title: `${viewingsCount} view${viewingsCount === 1 ? "" : "s"}`
               };
-            },
-            component: Location
+            }
           }
         }
       ]
@@ -128,10 +127,8 @@ export default {
       visitors: "visitors"
     },
     prepare({ page, visitors }) {
-      const viewCount = visitors.reduce(
-        (acc, curr) => acc + curr.viewDates.length,
-        0
-      );
+      const viewCount =
+        visitors?.reduce((acc, curr) => acc + curr.viewings.length, 0) || 0;
       return {
         title: `${page} - ${viewCount} view${viewCount === 1 ? "" : "s"}`
       };

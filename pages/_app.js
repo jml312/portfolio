@@ -8,13 +8,15 @@ import { ThemeProvider } from "next-themes";
 import { useEffect } from "react";
 import { polyfill } from "smoothscroll-polyfill";
 import { LazyMotion, MotionConfig } from "framer-motion";
-import useLogPageView from "hooks/useLogPageView";
+import useStoreUserData from "hooks/useStoreUserData";
+import useLogView from "hooks/useLogView";
 import { useRouter } from "next/router";
 import getPageSlug from "utils/getPageSlug";
 
 function App({ Component, pageProps }) {
   useEffect(() => polyfill(), []);
-  useLogPageView(getPageSlug(useRouter().asPath));
+  useStoreUserData();
+  useLogView(getPageSlug(useRouter().asPath));
 
   return (
     <ThemeProvider

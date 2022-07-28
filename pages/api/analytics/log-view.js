@@ -1,0 +1,77 @@
+import client from "lib/sanity.mjs";
+import { hasIpQuery } from "lib/queries.mjs";
+import { isIP } from "is-ip";
+import { parse } from "cookie";
+import { verify } from "jsonwebtoken";
+
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).send("Method Not Allowed");
+  }
+
+  const { slug, referrer, date, timeSpent } = req.query;
+
+  try {
+    const token = parse(req.headers.cookie)?.token;
+
+    const { ip, locationLong, locationShort, latLong, device, os, browser } =
+      verify(token, process.env.JWT_SECRET);
+
+    if (
+      !isIP(ip) ||
+      !slug ||
+      !referrer ||
+      !date ||
+      !timeSpent ||
+      !locationLong ||
+      !locationShort ||
+      !latLong ||
+      !device ||
+      !os ||
+      !browser
+    ) {
+      return res.status(400).send("Parameters are missing");
+    }
+
+    // if (process.env.PERSONAL_IPS.split(",").includes(ip)) {
+    //   return res.status(400).send("Viewed from personal IP");
+    // }
+
+    const foundDoc = await client.fetch(hasIpQuery, { ip, slug });
+    const viewingData = {
+      _key: date,
+      date,
+      referrer,
+      timeSpent: Number(timeSpent),
+      locationLong,
+      locationShort,
+      latLong
+    };
+    if (!foundDoc) {
+      await client
+        .patch(slug)
+        .append("visitors", [
+          {
+            _key: ip,
+            viewings: [viewingData],
+            ip,
+            device,
+            os,
+            browser: browser.charAt(0).toUpperCase() + browser.slice(1)
+          }
+        ])
+        .commit();
+    } else {
+      await client
+        .patch(slug)
+        .insert("after", `visitors[_key == \"${ip}\"].viewings[-1]`, [
+          viewingData
+        ])
+        .commit();
+    }
+
+    return res.status(200).json({ success: true });
+  } catch {
+    return res.status(500).json({ success: false });
+  }
+}
