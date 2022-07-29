@@ -61,15 +61,16 @@ export default function Article({
 
   if (isStripeLoading) return <StripeLoader />;
 
+  const blogTitle = `${title} – Josh Levy`;
   return (
     <>
       <NextSeo
-        title={title}
+        title={blogTitle}
         description={description}
         canonical={`${LIVE}/blog/${slug}`}
         openGraph={{
           ...BlogSEO.openGraph,
-          title,
+          blogTitle,
           description,
           url: `${LIVE}/blog/${slug}`,
           tags: [...tags, ...BlogSEO.openGraph.tags],
