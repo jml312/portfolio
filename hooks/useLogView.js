@@ -23,7 +23,7 @@ const useLogView = (slug) => {
   useEffect(() => {
     document.addEventListener("visibilitychange", logData);
     return () => document.removeEventListener("visibilitychange", logData);
-  }, [startDate]);
+  }, [startDate, slug]);
 };
 
 export default useLogView;
