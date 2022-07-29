@@ -60,6 +60,7 @@ export default async function handler(req, res) {
     if (!foundDoc) {
       await client
         .patch(slug)
+        .inc({ views: 1 })
         .append("visitors", [
           {
             _key: ip,
@@ -74,6 +75,7 @@ export default async function handler(req, res) {
     } else {
       await client
         .patch(slug)
+        .inc({ views: 1 })
         .insert("after", `visitors[_key == \"${ip}\"].viewings[-1]`, [
           viewingData
         ])

@@ -14,6 +14,12 @@ export default {
       type: "string"
     },
     {
+      name: "views",
+      title: "Views",
+      type: "number",
+      initialValue: 0
+    },
+    {
       name: "visitors",
       title: "Visitors",
       type: "array",
@@ -130,13 +136,11 @@ export default {
   preview: {
     select: {
       page: "page",
-      visitors: "visitors"
+      views: "views"
     },
-    prepare({ page, visitors }) {
-      const viewCount =
-        visitors?.reduce((acc, curr) => acc + curr.viewings.length, 0) || 0;
+    prepare({ page, views }) {
       return {
-        title: `${page} - ${viewCount} view${viewCount === 1 ? "" : "s"}`
+        title: `${page} - ${views} view${views === 1 ? "" : "s"}`
       };
     }
   }
