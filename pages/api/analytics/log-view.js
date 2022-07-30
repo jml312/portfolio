@@ -42,9 +42,9 @@ export default async function handler(req, res) {
       return res.status(400).send("Parameters are missing");
     }
 
-    // if (process.env.PERSONAL_IPS.split(",").includes(ip)) {
-    //   return res.status(400).send("Viewed from personal IP");
-    // }
+    if (process.env.PERSONAL_IPS.split(",").includes(ip)) {
+      return res.status(400).send("Viewed from personal IP");
+    }
 
     const foundDoc = await client.fetch(hasIpQuery, { ip, slug });
     const viewingData = {
