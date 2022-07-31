@@ -2,6 +2,7 @@ import getDeviceType from "utils/getDeviceType";
 import { browserName, detectOS } from "detect-browser";
 import { useEffect } from "react";
 import getUnicodeFlagIcon from "country-flag-icons/unicode";
+import { MIN_PAGE_VIEW_TIME } from "constants/index";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -43,7 +44,7 @@ const useStoreUserData = () => {
           })
         });
       }
-    }, 10000);
+    }, MIN_PAGE_VIEW_TIME * 1000);
     return () => clearTimeout(timer);
   }, []);
 };
