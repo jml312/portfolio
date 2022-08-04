@@ -51,7 +51,7 @@ export default async function handler(req, res) {
       _key: date,
       date,
       referrer,
-      timeSpent: Number(timeSpent),
+      timeSpent: Math.min(Number(timeSpent), 600),
       locationLong,
       locationShort,
       flag,
@@ -68,7 +68,7 @@ export default async function handler(req, res) {
             ip,
             device,
             os,
-            browser: browser.charAt(0).toUpperCase() + browser.slice(1)
+            browser
           }
         ])
         .commit();
