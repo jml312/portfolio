@@ -41,7 +41,7 @@ export default function Article({
   const links = [
     {
       name: "Email",
-      href: "mailto:joshlevy.texas@gmail.com",
+      href: "mailto:me@joshlevy.io",
       Icon: HiMail,
       isExternal: true
     },
