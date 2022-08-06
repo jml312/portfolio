@@ -251,7 +251,7 @@ export default function Article({
               isExternal: false
             },
             {
-              name: "Analytics",
+              name: "Dashboard",
               href: "https://dashboard.joshlevy.io/",
               Icon: MdAutoGraph,
               isExternal: true

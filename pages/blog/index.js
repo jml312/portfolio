@@ -245,7 +245,7 @@ export default function Blog({ blogPosts, allTags }) {
               isExternal: false
             },
             {
-              name: "Analytics",
+              name: "Dashboard",
               href: "https://dashboard.joshlevy.io/",
               Icon: MdAutoGraph,
               isExternal: true

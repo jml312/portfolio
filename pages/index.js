@@ -17,7 +17,7 @@ import useMediaQuery from "hooks/useMediaQuery";
 import ClickAwayListener from "react-click-away-listener";
 import { RiMailSendLine } from "react-icons/ri";
 import waitForScrollEnd from "utils/waitForScrollEnd";
-import { MdOutlineDashboard, MdWorkOutline,  MdAutoGraph } from "react-icons/md";
+import { MdOutlineDashboard, MdWorkOutline, MdAutoGraph } from "react-icons/md";
 import { GoBook } from "react-icons/go";
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -333,7 +333,7 @@ export default function HomePage({
             links={[
               ...links,
               {
-                name: "Analytics",
+                name: "Dashboard",
                 href: "https://dashboard.joshlevy.io/",
                 Icon: MdAutoGraph,
                 isExternal: true
