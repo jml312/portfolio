@@ -14,6 +14,7 @@ import {
 } from "react-icons/si";
 import Sanity from "components/svgs/Sanity";
 import Forms from "components/svgs/Forms";
+import Mantine from "components/svgs/Mantine";
 import { m } from "framer-motion";
 import { FaGithubAlt } from "react-icons/fa";
 
@@ -101,6 +102,12 @@ function Projects({
       slug: "googleforms",
       Icon: <Forms className={`text-2xl`} />,
       href: "https://www.google.com/forms/about/"
+    },
+    {
+      name: "Mantine",
+      slug: "mantine",
+      Icon: <Mantine className={`text-2xl`} />,
+      href: "https://mantine.dev/"
     }
   ];
 
