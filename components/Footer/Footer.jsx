@@ -39,7 +39,7 @@ function Footer({
               target="_blank"
               rel="noreferrer"
               title={name}
-              className={`hover:text-[rgba(255,255,245,0.8)] dark:hover:text-[rgba(28,29,37,0.8)] active:scale-95 ${
+              className={`cursor-pointer hover:text-[rgba(255,255,245,0.8)] dark:hover:text-[rgba(28,29,37,0.8)] active:scale-95 ${
                 useTransition
                   ? "transition-all duration-[250ms] ease-in-out"
                   : "transition-none"
@@ -52,7 +52,7 @@ function Footer({
               <a
                 key={name}
                 title={name}
-                className={`hover:text-[rgba(255,255,245,0.8)] dark:hover:text-[rgba(28,29,37,0.8)] active:scale-95 ${
+                className={`cursor-pointer hover:text-[rgba(255,255,245,0.8)] dark:hover:text-[rgba(28,29,37,0.8)] active:scale-95 ${
                   useTransition
                     ? "transition-all duration-[250ms] ease-in-out"
                     : "transition-none"

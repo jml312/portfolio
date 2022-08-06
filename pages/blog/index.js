@@ -13,8 +13,7 @@ import Fuse from "fuse.js";
 import { NextSeo } from "next-seo";
 import { BlogSEO } from "seo";
 import { blogPageQuery } from "lib/queries.mjs";
-import { TbDeviceAnalytics } from "react-icons/tb";
-import { DASHBOARD_URL } from "constants";
+import { MdAutoGraph } from "react-icons/md";
 
 export default function Blog({ blogPosts, allTags }) {
   const footerRef = useRef();
@@ -247,8 +246,8 @@ export default function Blog({ blogPosts, allTags }) {
             },
             {
               name: "Analytics",
-              href: DASHBOARD_URL,
-              Icon: TbDeviceAnalytics,
+              href: "https://dashboard.joshlevy.io/",
+              Icon: MdAutoGraph,
               isExternal: true
             }
           ]}

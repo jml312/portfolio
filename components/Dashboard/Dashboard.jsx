@@ -1,9 +1,9 @@
+import { BASE_URL } from "constants";
 import MetricCard from "./MetricCard";
 import SongCard from "./SongCard";
 import { useState } from "react";
 import { AnimatePresence, m } from "framer-motion";
 import Filter from "bad-words";
-import { BASE_URL } from "constants";
 
 function Dashboard({
   dashboardRef,
@@ -20,34 +20,33 @@ function Dashboard({
   const [isShortTerm, setIsShortTerm] = useState(true);
   const [hasChangedSongs, setHasChangedSongs] = useState(false);
   const filter = new Filter();
-  const capitalize = (word) =>
-    word[0].toUpperCase() + word.slice(1).toLowerCase();
 
   const metrics = [
     {
       header: "Hours Coding",
-      metric: codingTime ? Math.round(codingTime / 3600) : "-",
+      metric: codingTime,
       link: "https://wakatime.com/@jlev111",
-      isDisabled: !codingTime
+      isDisabled: codingTime === "-"
     },
     {
-      header: `Top Language${languages?.length > 1 ? "s" : ""}`,
-      metric: languages?.length
-        ? languages.map(({ name }) => name).join(", ")
-        : "-",
+      header: `Top Language${languages.split(",").length > 1 ? "s" : ""}`,
+      metric: languages,
       link: "https://wakatime.com/@jlev111",
-      isDisabled: !languages?.length
+      isDisabled: languages === "-"
     },
     {
       header: "Current Project",
-      metric: project?.name ? capitalize(project?.name) : "-",
-      link: `https://github.com/jml312/${project?.name}`,
-      isDisabled: !project?.name
+      metric: project,
+      link: `https://github.com/jml312/${project
+        .split(" ")
+        .map((word) => word.toLowerCase())
+        .join("-")}`,
+      isDisabled: project === "-"
     },
     {
       header: "All-Time Views",
       metric: totalViews ?? "-",
-      link: `${BASE_URL}/blog`,
+      link: `/blog`,
       isDisabled: totalViews === null
     }
   ];
@@ -73,8 +72,8 @@ function Dashboard({
           Dashboard
         </h1>
         <p className="mb-2.5 dark:text-[rgba(255,255,245,0.75)] text-[rgba(28,29,37,0.75)] text-[1.1rem] md:text-[1.2rem]">
-          This is my personal dashboard, which tracks my coding stats and views
-          of my blog articles. Check back to see what I'm up to!
+          This is my personal dashboard, which tracks my coding stats for the
+          week and views of my blog articles. Check back to see what I'm up to!
         </p>
       </m.div>
 

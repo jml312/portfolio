@@ -1,3 +1,4 @@
+import { LIVE } from "constants";
 import client from "lib/sanity.mjs";
 import urlForImage from "utils/urlForImage";
 import { PortableText } from "@portabletext/react";
@@ -18,11 +19,10 @@ import ArticleCard from "components/Articles/ArticleCard";
 import { CopyBlock, atomOneDark, atomOneLight } from "react-code-blocks";
 import BlogNav from "components/BlogNav";
 import Image from "next/future/image";
-import { LIVE, DASHBOARD_URL } from "constants";
 import { NextSeo } from "next-seo";
 import { BlogSEO } from "seo";
 import { articlePageQuery, blogSlugsQuery } from "lib/queries.mjs";
-import { TbDeviceAnalytics } from "react-icons/tb";
+import { MdAutoGraph } from "react-icons/md";
 
 export default function Article({
   currentPost,
@@ -252,8 +252,8 @@ export default function Article({
             },
             {
               name: "Analytics",
-              href: DASHBOARD_URL,
-              Icon: TbDeviceAnalytics,
+              href: "https://dashboard.joshlevy.io/",
+              Icon: MdAutoGraph,
               isExternal: true
             }
           ]}

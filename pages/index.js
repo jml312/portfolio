@@ -17,7 +17,7 @@ import useMediaQuery from "hooks/useMediaQuery";
 import ClickAwayListener from "react-click-away-listener";
 import { RiMailSendLine } from "react-icons/ri";
 import waitForScrollEnd from "utils/waitForScrollEnd";
-import { MdOutlineDashboard, MdWorkOutline } from "react-icons/md";
+import { MdOutlineDashboard, MdWorkOutline,  MdAutoGraph } from "react-icons/md";
 import { GoBook } from "react-icons/go";
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -25,12 +25,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoMdClose } from "react-icons/io";
 import { getTopTracks, getWakaTimeStats } from "utils/metrics";
-import { BASE_URL, DASHBOARD_URL } from "constants/index.mjs";
+import { BASE_URL } from "constants/index.mjs";
 import StripeLoader from "components/StripeLoader";
 import { NextSeo } from "next-seo";
 import { IndexSEO } from "seo";
 import { indexPageQuery } from "lib/queries.mjs";
-import { TbDeviceAnalytics } from "react-icons/tb";
 
 export default function HomePage({
   blogPosts,
@@ -301,7 +300,7 @@ export default function HomePage({
             longTermTracks={longTermTracks}
             languages={wakaTime.languages}
             project={wakaTime.project}
-            codingTime={wakaTime.total_seconds}
+            codingTime={wakaTime.codingTime}
             totalViews={totalViews}
             useTransition={useTransition}
             prefersReducedMotion={prefersReducedMotion}
@@ -335,8 +334,8 @@ export default function HomePage({
               ...links,
               {
                 name: "Analytics",
-                href: DASHBOARD_URL,
-                Icon: TbDeviceAnalytics,
+                href: "https://dashboard.joshlevy.io/",
+                Icon: MdAutoGraph,
                 isExternal: true
               }
             ]}
