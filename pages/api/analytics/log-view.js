@@ -47,7 +47,7 @@ export default async function handler(req, res) {
       _key: date,
       date,
       referrer,
-      timeSpent: Math.min(Number(timeSpent), 600),
+      timeSpent: Math.min(Number(timeSpent), 300), // 5 mins max
       locationLong,
       locationShort,
       flag,
