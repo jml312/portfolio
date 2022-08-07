@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  /* manual border radius on search input */
-  input[type='search'] {
-    border-radius: 0.375rem !important;
-  }
   /* clears the 'X' from Internet Explorer */
   input[type="search"]::-ms-clear {
     display: none;
