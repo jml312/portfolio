@@ -147,7 +147,7 @@ export default function Article({
                   "font-medium text-[.75rem] sm:text-[.8rem] bg-dark dark:bg-light text-light dark:text-dark w-fit py-[.1rem] px-[0.3125rem] rounded-md"
                 }
               >
-                {tag}
+                {tag.toLowerCase()}
               </span>
             ))}
           </div>

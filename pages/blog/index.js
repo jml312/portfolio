@@ -108,7 +108,12 @@ export default function Blog({ blogPosts, allTags }) {
             total, I've written {blogPosts.length} articles on my blog. Use the
             search below to filter by title or select a tag.
           </p>
-          <div className={"w-full relative mb-1"}>
+          <div
+            className={"w-full relative mb-1 rounded-md search-container"}
+            style={{
+              borderRadius: ".375rem"
+            }}
+          >
             <input
               type="search"
               name="search"
@@ -117,7 +122,7 @@ export default function Blog({ blogPosts, allTags }) {
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               className={
-                "block w-full px-4 py-2 text-dark border-[0.5px] border-dark dark:border-light dark:text-light focus:ring-blue-500 focus:border-blue-500 bg-[rgba(255,255,245,0.9)] dark:bg-[rgba(28,29,37,0.9)]"
+                "block w-full px-4 py-2 rounded-md text-dark border-[0.5px] border-dark dark:border-light dark:text-light focus:ring-blue-500 focus:border-blue-500 bg-[rgba(255,255,245,0.9)] dark:bg-[rgba(28,29,37,0.9)]"
               }
               style={{
                 borderRadius: ".375rem"
@@ -155,7 +160,7 @@ export default function Blog({ blogPosts, allTags }) {
                 <div
                   className={`text-[.85rem] sm:text-[.9rem] text-center cursor-pointer rounded-md px-2 py-0.5 ring-dark dark:ring-light ring-1 peer-checked:ring-[2.5px] dark:peer-checked:ring-[2.5px] dark:bg-dark bg-light active:scale-95`}
                 >
-                  {tag}
+                  {tag.toLowerCase()}
                 </div>
               </label>
             ))}
