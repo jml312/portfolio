@@ -108,7 +108,7 @@ export default function Blog({ blogPosts, allTags }) {
             total, I've written {blogPosts.length} articles on my blog. Use the
             search below to filter by title or select a tag.
           </p>
-          <div className={"w-full relative mb-1"}>
+          <div className={"w-full relative mb-1 rounded-md"}>
             <input
               type="search"
               name="search"
