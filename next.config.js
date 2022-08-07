@@ -2,7 +2,7 @@ module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["cdn.sanity.io"]
+    domains: ["res.cloudinary.com"]
   },
   experimental: {
     images: { allowFutureImage: true }

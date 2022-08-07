@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  div.search-container {
-    border-radius: .375rem;
-  }
   /* clears the 'X' from Internet Explorer */
   input[type="search"]::-ms-clear {
     display: none;

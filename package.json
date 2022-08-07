@@ -22,7 +22,6 @@
     "@react-three/drei": "^8.16.5",
     "@react-three/fiber": "^7.0.26",
     "@sanity/client": "^2.23.2",
-    "@sanity/image-url": "^1.0.1",
     "@stripe/stripe-js": "^1.29.0",
     "cookie": "^0.5.0",
     "country-flag-icons": "^1.5.5",

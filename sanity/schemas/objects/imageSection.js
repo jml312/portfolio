@@ -9,11 +9,9 @@ export default {
       type: "string"
     },
     {
-      title: "Image",
-      name: "image",
-      type: "image",
-      validation: (Rule) => Rule.required()
+      title: "Image URL",
+      name: "imageUrl",
+      type: "url"
     }
   ]
 };
-

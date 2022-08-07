@@ -2,7 +2,6 @@ import { NextSeo } from "next-seo";
 import { ArticleSEO } from "seo";
 import { LIVE } from "constants";
 import client from "lib/sanity.mjs";
-import urlForImage from "utils/urlForImage";
 import { PortableText } from "@portabletext/react";
 import readingTime from "reading-time";
 import { useState, useRef } from "react";
@@ -162,12 +161,12 @@ export default function Article({
             value={post}
             components={{
               types: {
-                imageSection: ({ value }) => {
+                imageSection: ({ value: { imageUrl, alt } }) => {
                   return (
                     <div className={"w-full flex justify-center items-center"}>
                       <Image
-                        src={urlForImage(value.image.asset._ref)}
-                        alt={value.alt}
+                        src={imageUrl}
+                        alt={alt}
                         width={200}
                         height={200}
                         className={"rounded-md w-3/4"}
