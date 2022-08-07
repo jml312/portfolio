@@ -1,3 +1,5 @@
+import { NextSeo } from "next-seo";
+import { ArticleSEO } from "seo";
 import { LIVE } from "constants";
 import client from "lib/sanity.mjs";
 import urlForImage from "utils/urlForImage";
@@ -19,8 +21,6 @@ import ArticleCard from "components/Articles/ArticleCard";
 import { CopyBlock, atomOneDark, atomOneLight } from "react-code-blocks";
 import BlogNav from "components/BlogNav";
 import Image from "next/future/image";
-import { NextSeo } from "next-seo";
-import { BlogSEO } from "seo";
 import { articlePageQuery, blogSlugsQuery } from "lib/queries.mjs";
 import { MdAutoGraph } from "react-icons/md";
 
@@ -62,28 +62,27 @@ export default function Article({
   if (isStripeLoading) return <StripeLoader />;
 
   const blogTitle = `${title} – Josh Levy`;
+  const SEO = {
+    ...ArticleSEO,
+    title: blogTitle,
+    description: description,
+    canonical: `${LIVE}/blog/${slug}`,
+    openGraph: {
+      ...ArticleSEO.openGraph,
+      title: blogTitle,
+      description,
+      url: `${LIVE}/blog/${slug}`,
+      tags: [...tags, ...ArticleSEO.openGraph.tags],
+      type: "article",
+      article: {
+        publishedTime: published,
+        tags
+      }
+    }
+  };
   return (
     <>
-      <NextSeo
-        title={blogTitle}
-        description={description}
-        canonical={`${LIVE}/blog/${slug}`}
-        openGraph={{
-          ...BlogSEO.openGraph,
-          blogTitle,
-          description,
-          url: `${LIVE}/blog/${slug}`,
-          tags: [...tags, ...BlogSEO.openGraph.tags],
-          type: "article",
-          article: {
-            publishedTime: published,
-            tags
-          }
-        }}
-        {...BlogSEO.twitter}
-        {...BlogSEO.additionalLinkTags}
-        {...BlogSEO.additionalMetaTags}
-      />
+      <NextSeo {...SEO} />
       <main
         className={
           "flex flex-col justify-center items-center text-center mt-10 gap-2 mx-auto min-w-[21rem] max-w-3xl px-4"

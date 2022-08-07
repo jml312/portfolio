@@ -74,14 +74,15 @@ const DEFAULT_SEO = {
 };
 
 const IndexSEO = {
+  ...DEFAULT_SEO,
   title: "Josh Levy – Fullstack Developer",
   description:
     "A fullstack developer with a passion for creating smooth, performant, and intuitive web applications.",
-  canonical: LIVE,
-  ...DEFAULT_SEO
+  canonical: LIVE
 };
 
 const BlogSEO = {
+  ...DEFAULT_SEO,
   title: "Blog – Josh Levy",
   description:
     "Thoughts on web development, the software industry, experiences in tech, and my personal life.",
@@ -92,20 +93,15 @@ const BlogSEO = {
     description:
       "Thoughts on web development, the software industry, experiences in tech, and my personal life.",
     tags: ["Blog", ...DEFAULT_SEO.openGraph.tags]
-  },
-  ...DEFAULT_SEO.twitter,
-  ...DEFAULT_SEO.additionalLinkTags,
-  ...DEFAULT_SEO.additionalMetaTags
+  }
 };
 
 const ArticleSEO = {
+  ...DEFAULT_SEO,
   openGraph: {
     ...DEFAULT_SEO.openGraph,
     tags: ["Blog", ...DEFAULT_SEO.openGraph.tags]
-  },
-  ...DEFAULT_SEO.twitter,
-  ...DEFAULT_SEO.additionalLinkTags,
-  ...DEFAULT_SEO.additionalMetaTags
+  }
 };
 
 export { IndexSEO, BlogSEO, ArticleSEO };
