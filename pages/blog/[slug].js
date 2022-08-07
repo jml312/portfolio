@@ -190,7 +190,7 @@ export default function Article({
           />
         </article>
 
-        {relatedPosts.length && (
+        {relatedPosts.length > 0 && (
           <div className="w-full">
             <h2
               className={
@@ -204,7 +204,7 @@ export default function Article({
                 "flex flex-col justify-center items-center w-full gap-6 mt-4"
               }
             >
-              {relatedPosts.map((article, i) => (
+              {relatedPosts.map((article) => (
                 <ArticleCard
                   key={article.title}
                   title={article.title}
