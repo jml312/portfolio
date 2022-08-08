@@ -117,7 +117,7 @@ export default function Blog({ blogPosts, allTags }) {
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               className={
-                "block w-full px-4 py-2 rounded-md text-dark border-[1px] border-dark dark:border-light dark:text-light focus:ring-[1px] focus:ring-blue-500 focus:border-blue-500 bg-[rgba(255,255,245,0.9)] dark:bg-[rgba(28,29,37,0.9)]"
+                "block w-full px-4 py-2 rounded-md text-dark border-[.5px] border-dark dark:border-light dark:text-light focus:ring-blue-500 focus:border-blue-500 bg-[rgba(255,255,245,0.9)] dark:bg-[rgba(28,29,37,0.9)]"
               }
             />
             <AiOutlineSearch
