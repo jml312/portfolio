@@ -71,7 +71,7 @@ function Projects({
       name: "MongoDB",
       slug: "mongodb",
       Icon: <SiMongodb className={`text-2xl`} />,
-      href: "https:/www.mongodb.com/"
+      href: "https://www.mongodb.com/"
     },
     {
       name: "React",
