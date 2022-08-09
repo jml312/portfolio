@@ -25,7 +25,11 @@ export default async function handler(req, res) {
       name,
       email,
       message,
-      date: new Date().toISOString(),
+      date: new Date(
+        new Date().toLocaleString("en-US", {
+          timeZone: "America/New_York"
+        })
+      ).toISOString(),
       isRead: false
     });
     return res.status(200).json({ hasSubmitted: false, success: true });

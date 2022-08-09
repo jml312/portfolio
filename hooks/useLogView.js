@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import { MIN_PAGE_VIEW_TIME } from "constants/index";
 
 const useLogView = (slug) => {
-  const [startDate, setStartDate] = useState(new Date().getTime());
+  const [startDate, setStartDate] = useState(
+    new Date(
+      new Date().toLocaleString("en-US", {
+        timeZone: "America/New_York"
+      })
+    ).getTime()
+  );
 
   const logData = () => {
     if (document.visibilityState === "hidden") {
@@ -21,7 +27,13 @@ const useLogView = (slug) => {
         );
       }
     } else {
-      setStartDate(new Date().getTime());
+      setStartDate(
+        new Date(
+          new Date().toLocaleString("en-US", {
+            timeZone: "America/New_York"
+          })
+        ).getTime()
+      );
     }
   };
 

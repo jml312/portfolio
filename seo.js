@@ -1,8 +1,10 @@
+import { LIVE } from "constants/index.mjs";
+
 const DEFAULT_SEO = {
   openGraph: {
     type: "website",
     locale: "en_IE",
-    url: "https://www.joshlevy.io",
+    url: LIVE,
     title: "Josh Levy - Fullstack Developer",
     description:
       "A fullstack developer with a passion for creating smooth, performant, and intuitive web applications.",
@@ -17,7 +19,7 @@ const DEFAULT_SEO = {
     site_name: "joshlevy.io",
     images: [
       {
-        url: `https://www.joshlevy.io/assets/joshlevyio.png/assets/joshlevyio.png`,
+        url: `${LIVE}/assets/joshlevyio.png`,
         width: 800,
         height: 600,
         alt: "joshlevy.io"
@@ -76,7 +78,7 @@ const IndexSEO = {
   title: "Josh Levy – Fullstack Developer",
   description:
     "A fullstack developer with a passion for creating smooth, performant, and intuitive web applications.",
-  canonical: "https://www.joshlevy.io"
+  canonical: LIVE
 };
 
 const BlogSEO = {
@@ -84,10 +86,10 @@ const BlogSEO = {
   title: "Blog – Josh Levy",
   description:
     "Thoughts on web development, the software industry, experiences in tech, and my personal life.",
-  canonical: `https://www.joshlevy.io/blog`,
+  canonical: `${LIVE}/blog`,
   openGraph: {
     ...DEFAULT_SEO.openGraph,
-    url: `https://www.joshlevy.io/blog`,
+    url: `${LIVE}/blog`,
     description:
       "Thoughts on web development, the software industry, experiences in tech, and my personal life.",
     tags: ["Blog", ...DEFAULT_SEO.openGraph.tags]
