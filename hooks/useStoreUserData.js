@@ -2,7 +2,7 @@ import getDeviceType from "utils/getDeviceType";
 import { browserName, detectOS } from "detect-browser";
 import { useEffect } from "react";
 import getUnicodeFlagIcon from "country-flag-icons/unicode";
-import { MIN_PAGE_VIEW_TIME } from "constants/index";
+import { MIN_PAGE_VIEW_TIME } from "constants/index.mjs";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 

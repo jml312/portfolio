@@ -1,4 +1,4 @@
-import { BASE_URL } from "constants";
+import { BASE_URL } from "constants/index.mjs";
 import MetricCard from "./MetricCard";
 import SongCard from "./SongCard";
 import { useState } from "react";
@@ -46,7 +46,7 @@ function Dashboard({
     {
       header: "All-Time Views",
       metric: totalViews ?? "-",
-      link: `/blog`,
+      link: `${BASE_URL}/blog`,
       isDisabled: totalViews === null
     }
   ];

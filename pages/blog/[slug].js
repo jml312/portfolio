@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 import { ArticleSEO } from "seo";
-import { LIVE } from "constants";
+import { LIVE } from "constants/index.mjs";
 import client from "lib/sanity.mjs";
 import { PortableText } from "@portabletext/react";
 import readingTime from "reading-time";

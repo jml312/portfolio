@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MIN_PAGE_VIEW_TIME } from "constants/index";
+import { MIN_PAGE_VIEW_TIME } from "constants/index.mjs";
 
 const useLogView = (slug) => {
   const [startDate, setStartDate] = useState(
