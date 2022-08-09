@@ -1,10 +1,8 @@
-import { LIVE } from "constants";
-
 const DEFAULT_SEO = {
   openGraph: {
     type: "website",
     locale: "en_IE",
-    url: LIVE,
+    url: "https://www.joshlevy.io",
     title: "Josh Levy - Fullstack Developer",
     description:
       "A fullstack developer with a passion for creating smooth, performant, and intuitive web applications.",
@@ -19,7 +17,7 @@ const DEFAULT_SEO = {
     site_name: "joshlevy.io",
     images: [
       {
-        url: `${LIVE}/assets/joshlevyio.png`,
+        url: `https://www.joshlevy.io/assets/joshlevyio.png/assets/joshlevyio.png`,
         width: 800,
         height: 600,
         alt: "joshlevy.io"
@@ -78,7 +76,7 @@ const IndexSEO = {
   title: "Josh Levy – Fullstack Developer",
   description:
     "A fullstack developer with a passion for creating smooth, performant, and intuitive web applications.",
-  canonical: LIVE
+  canonical: "https://www.joshlevy.io"
 };
 
 const BlogSEO = {
@@ -86,10 +84,10 @@ const BlogSEO = {
   title: "Blog – Josh Levy",
   description:
     "Thoughts on web development, the software industry, experiences in tech, and my personal life.",
-  canonical: `${LIVE}/blog`,
+  canonical: `https://www.joshlevy.io/blog`,
   openGraph: {
     ...DEFAULT_SEO.openGraph,
-    url: `${LIVE}/blog`,
+    url: `https://www.joshlevy.io/blog`,
     description:
       "Thoughts on web development, the software industry, experiences in tech, and my personal life.",
     tags: ["Blog", ...DEFAULT_SEO.openGraph.tags]

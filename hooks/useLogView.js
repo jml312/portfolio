@@ -6,7 +6,11 @@ const useLogView = (slug) => {
 
   const logData = () => {
     if (document.visibilityState === "hidden") {
-      const now = new Date();
+      const now = new Date(
+        new Date().toLocaleString("en-US", {
+          timeZone: "America/New_York"
+        })
+      );
       const totalTime = (now.getTime() - startDate) / 1000;
       if (totalTime >= MIN_PAGE_VIEW_TIME) {
         const referrer = document.referrer || "Direct / None";
