@@ -12,7 +12,6 @@ const ThreeJ = dynamic(() => import("components/ThreeJ"), {
 
 function Home({
   homeRef,
-  resume,
   theme,
   setPopupOpen,
   links,
@@ -20,9 +19,6 @@ function Home({
   popupOpen,
   useTransition
 }) {
-  const resumeHref = `https://cdn.sanity.io/files/${
-    process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-  }/production/${resume.split("-").slice(1).join(".")}`;
   const sectionControls = useAnimation();
 
   useEffect(() => {
@@ -74,7 +70,7 @@ function Home({
             }
           >
             <a
-              href={resumeHref}
+              href={"/assets/Josh%20Levy%20Resume.pdf"}
               target="_blank"
               rel="noreferrer"
               className={`dark:hover:bg-[rgba(255,255,245,0.8)] hover:bg-[rgba(28,29,37,0.8)] hover:text-light dark:hover:text-dark border-[1.5px] border-dark dark:border-light hover:border-transparent dark:hover:border-transparent rounded-l-md px-3 py-2.5 font-[600] ${

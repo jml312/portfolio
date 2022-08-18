@@ -36,7 +36,6 @@ export default function HomePage({
   bio,
   projects,
   experience,
-  resume,
   shortTermTracks,
   longTermTracks,
   wakaTime,
@@ -271,7 +270,6 @@ export default function HomePage({
             homeRef={homeRef}
             articleRef={articleRef}
             setPopupOpen={setPopupOpen}
-            resume={resume}
             footerRef={footerRef}
             popupOpen={popupOpen}
             useTransition={useTransition}

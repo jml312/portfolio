@@ -6,14 +6,13 @@ import blog from "./documents/blog";
 import pageViews from "./documents/views";
 import submissions from "./documents/submissions";
 
-import resume from "./objects/resume";
 import projects from "./objects/projects";
 import experience from "./objects/experience";
 import bio from "./objects/bio";
 import imageSection from "./objects/imageSection";
 import codeBlock from "./objects/codeBlock";
 
-const PORTFOLIO = [portfolio, bio, resume, projects, experience];
+const PORTFOLIO = [portfolio, bio, projects, experience];
 const BLOG = [imageSection, codeBlock, blog];
 const PAGE_VIEWS = [pageViews];
 const SUBMISSIONS = [submissions];

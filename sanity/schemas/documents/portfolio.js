@@ -4,11 +4,6 @@ export default {
   type: "document",
   fields: [
     {
-      title: "Resume",
-      name: "resume",
-      type: "resume"
-    },
-    {
       title: "Bio",
       name: "bio",
       type: "bio"
