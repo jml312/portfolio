@@ -52,13 +52,28 @@ export const getTopTracks = async () => {
 
 const capitalizeSlug = (words) =>
   words
-    .split("-")
-    .map((word) =>
+    ?.split("-")
+    ?.map((word) =>
       word.length <= 2
         ? word.toUpperCase()
         : word.charAt(0).toUpperCase() + word.slice(1)
     )
-    .join(" ");
+    ?.join(" ");
+
+const getTopLanguages = (languages) => {
+  return languages
+    ?.sort((a, b) => b.total_seconds - a.total_seconds)
+    ?.slice(0, 2)
+    ?.map(({ name }) => name)
+    ?.join(", ");
+};
+
+const getTopProject = (projects) => {
+  const maxTimeOnProject = Math.max(...projects.map((p) => p.total_seconds));
+  return capitalizeSlug(
+    projects.find((p) => p.total_seconds === maxTimeOnProject).name
+  );
+};
 
 export const getWakaTimeStats = async () => {
   const now = new Date();
@@ -80,10 +95,7 @@ export const getWakaTimeStats = async () => {
   return {
     codingTime: Math.round(json["cummulative_total"].seconds / 3600) ?? "-",
     languages:
-      json["data"][0].languages
-        .slice(0, 2)
-        .map(({ name }) => name)
-        .join(", ") ?? "-",
-    project: capitalizeSlug(json["data"][0].projects[0].name) ?? "-"
+      getTopLanguages(json["data"].map((el) => el.languages).flat()) || "-",
+    project: getTopProject(json["data"].map((el) => el.projects).flat()) || "-"
   };
 };
