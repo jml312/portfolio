@@ -61,11 +61,15 @@ const capitalizeSlug = (words) =>
     ?.join(" ");
 
 const getTopLanguages = (languages) => {
-  return languages
-    ?.sort((a, b) => b.total_seconds - a.total_seconds)
-    ?.slice(0, 2)
-    ?.map(({ name }) => name)
-    ?.join(", ");
+  return [
+    ...new Set(
+      languages
+        ?.sort((a, b) => b.total_seconds - a.total_seconds)
+        ?.map(({ name }) => name)
+    )
+  ]
+    .slice(0, 2)
+    .join(", ");
 };
 
 const getTopProject = (projects) => {
