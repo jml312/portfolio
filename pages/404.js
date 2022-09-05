@@ -9,5 +9,5 @@ export default function Custom404() {
     router.push(path);
   }, []);
 
-  return "null";
+  return null;
 }
