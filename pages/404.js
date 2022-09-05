@@ -6,7 +6,7 @@ export default function Custom404() {
 
   useEffect(() => {
     const path = router.asPath.startsWith("/blog/") ? "/blog" : "/";
-    router.push(path);
+    router.replace(path);
   }, []);
 
   return null;
