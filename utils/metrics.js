@@ -96,9 +96,11 @@ export const getWakaTimeStats = async () => {
     }
   );
   const json = await data.json();
-  const topProject = getTopProject(json["data"].map((el) => el.projects).flat())
+  const topProject = getTopProject(
+    json["data"].map((el) => el.projects).flat()
+  );
   return {
-    codingTime: Math.round(json["cummulative_total"].seconds / 3600) ?? "-",
+    codingTime: Math.round(json["cummulative_total"]?.seconds / 3600) ?? "-",
     languages:
       getTopLanguages(json["data"].map((el) => el.languages).flat()) || "-",
     project: (topProject !== "Desktop" && topProject) || "-"
