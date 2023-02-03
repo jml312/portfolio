@@ -100,9 +100,16 @@ export const getWakaTimeStats = async () => {
     json["data"].map((el) => el.projects).flat()
   );
   return {
-    codingTime: Math.round(json["cummulative_total"]?.seconds / 3600) ?? "-",
+    codingTime: json["cummulative_total"]?.seconds
+      ? Math.round(json["cummulative_total"] / seconds / 3600)
+      : "-",
     languages:
-      getTopLanguages(json["data"].map((el) => el.languages).flat()) || "-",
+      getTopLanguages(
+        json["data"]
+          .map((el) => el.languages)
+          .flat()
+          .filter((el) => el?.name !== "Other" && el?.name !== "Text")
+      ) || "-",
     project: (topProject !== "Desktop" && topProject) || "-"
   };
 };
