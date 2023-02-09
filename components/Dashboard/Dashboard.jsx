@@ -37,10 +37,7 @@ function Dashboard({
     {
       header: "Current Project",
       metric: project,
-      link: `https://github.com/jml312/${project
-        .split(" ")
-        .map((word) => word.toLowerCase())
-        .join("-")}`,
+      link: `https://github.com/jml312/${project}`,
       isDisabled: project === "-"
     },
     {
