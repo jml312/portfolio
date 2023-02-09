@@ -65,8 +65,6 @@ const getTopLanguages = (languages) => {
 const getTopProject = (projects) => {
   projects = projects.filter((p) => p.name !== "Desktop");
   const maxTimeOnProject = Math.max(...projects.map((p) => p.total_seconds));
-  console.log(projects);
-  console.log(projects.find((p) => p.total_seconds === maxTimeOnProject).name);
   return projects.find((p) => p.total_seconds === maxTimeOnProject).name;
 };
 
