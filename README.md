@@ -1,5 +1,6 @@
 # joshlevy.io
 
+Analytics: https://dashboard.joshlevy.io/
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Database + CMS**: [Sanity](https://www.sanity.io/)
