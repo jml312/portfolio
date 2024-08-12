@@ -8,7 +8,7 @@ module.exports = {
     return [
       {
         source: "/resume",
-        destination: "/assets/Josh%20Levy%20Resume.pdf",
+        destination: "/assets/Josh_Levy_Resume.pdf",
         permanent: true
       }
     ];
