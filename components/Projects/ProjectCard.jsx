@@ -86,18 +86,20 @@ function ProjectCard({
               GitHub
             </a>
           )}
-          <a
-            className={`text-[.9rem] md:text-[1rem] rounded-md bg-dark dark:bg-light text-light dark:text-dark active:scale-95 dark:hover:bg-[rgba(255,255,245,0.8)] hover:bg-[rgba(28,29,37,0.8)] py-1.5 flex justify-center items-center gap-1.5 w-full font-[500] ${
-              useTransition
-                ? "transition-all duration-[250ms] ease-in-out"
-                : "transition-none"
-            }`}
-            href={website}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Website
-          </a>
+          {website && (
+            <a
+              className={`text-[.9rem] md:text-[1rem] rounded-md bg-dark dark:bg-light text-light dark:text-dark active:scale-95 dark:hover:bg-[rgba(255,255,245,0.8)] hover:bg-[rgba(28,29,37,0.8)] py-1.5 flex justify-center items-center gap-1.5 w-full font-[500] ${
+                useTransition
+                  ? "transition-all duration-[250ms] ease-in-out"
+                  : "transition-none"
+              }`}
+              href={website}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Website
+            </a>
+          )}
         </div>
       </div>
     </m.div>
