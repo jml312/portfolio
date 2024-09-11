@@ -1691,9 +1691,9 @@
     slate "0.72.3"
 
 "@sanity/production-preview@^2.29.3":
-  version "2.29.3"
-  resolved "https://registry.npmjs.org/@sanity/production-preview/-/production-preview-2.29.3.tgz#6494ba268f31d934f4cb4a7b6dc15b6d7f616ea4"
-  integrity sha512-qqCKdAGejxJ1HHElaJOan2EUx2YbHdmFp5UbvOJ1dZy1bPYl5Qrsh0ijqD800w/qo/M7MMt63dRbkftmIUozEA==
+  version "2.35.3"
+  resolved "https://registry.npmjs.org/@sanity/production-preview/-/production-preview-2.35.3.tgz"
+  integrity sha512-z61q7u/kB3jN5kfBzWtTF7gt0rARl68Pet0i4hvjwjscA79XY6JkAl5/3RZu3jiOiaZ6ck03zT7euFfv7bwTRA==
 
 "@sanity/react-hooks@2.30.1":
   version "2.30.1"

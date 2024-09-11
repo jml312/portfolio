@@ -10,7 +10,8 @@ import {
   SiMongodb,
   SiReact,
   SiSquarespace,
-  SiCss3
+  SiCss3,
+  SiSupabase
 } from "react-icons/si";
 import Sanity from "components/svgs/Sanity";
 import Forms from "components/svgs/Forms";
@@ -78,6 +79,18 @@ function Projects({
       slug: "react",
       Icon: <SiReact className={`text-2xl`} />,
       href: "https://reactjs.org/"
+    },
+    {
+      name: "React Native",
+      slug: "reactnative",
+      Icon: <SiReact className={`text-2xl`} />,
+      href: "https://reactnative.dev"
+    },
+    {
+      name: "Supabase",
+      slug: "supabase",
+      Icon: <SiSupabase className={`text-2xl`} />,
+      href: "https://supabase.com"
     },
     {
       name: "Sanity",
