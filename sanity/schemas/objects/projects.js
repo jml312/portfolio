@@ -38,8 +38,7 @@ export default {
         {
           name: "website",
           title: "Website",
-          type: "url",
-          validation: (Rule) => Rule.required()
+          type: "url"
         },
         {
           name: "github",
