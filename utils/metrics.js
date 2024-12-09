@@ -63,9 +63,14 @@ const getTopLanguages = (languages) => {
 };
 
 const getTopProject = (projects) => {
-  projects = projects.filter((p) => p.name !== "Desktop");
-  const maxTimeOnProject = Math.max(...projects.map((p) => p.total_seconds));
-  return projects.find((p) => p.total_seconds === maxTimeOnProject).name;
+  if (!projects) return "-";
+  projects = projects.filter((p) => p?.name !== "Desktop");
+  const maxTimeOnProject = Math.max(
+    ...projects.map((p) => p?.total_seconds ?? 0)
+  );
+  return (
+    projects.find((p) => p?.total_seconds === maxTimeOnProject)?.name || "-"
+  );
 };
 
 export const getWakaTimeStats = async () => {
